@@ -5,6 +5,9 @@ Production interactive prototype for a regulated Indian micro-investing onboardi
 ## Current implementation
 
 - Responsive Sprout 2.0 homepage for desktop and explicit 390px mobile preview
+- Four-section scrollytelling homepage with reveal transitions, community marquee, bento trust cards, and a connected story bridge
+- Full-width KORU terrarium stage with desktop proximity tilt, four depth planes, responsive growth stages, and low-end/mobile 60FPS fallback
+- Rolling principal-versus-compounding wealth comparison bar
 - Interactive micro-goal cards that synchronize the selected goal and weekly amount with onboarding
 - Continuous homepage-to-app journey with exact selected goal, amount, and language handoff
 - Five-screen connected onboarding flow inside a realistic 395px mobile frame
