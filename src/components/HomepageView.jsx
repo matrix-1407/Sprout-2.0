@@ -4,10 +4,9 @@ import KoruAvatar3D from './ui/KoruAvatar3D';
 import RollingCurrency from './ui/RollingCurrency';
 import SpotlightCard from './ui/SpotlightCard';
 
-export default function HomepageView({ copy, language, onLanguageChange, onContinue }) {
+export default function HomepageView({ copy, language, onLanguageChange, onContinue, lowEndMode, mobilePreview, onMobilePreviewChange }) {
   const [goalKey, setGoalKey] = useState('emergency');
   const [weekly, setWeekly] = useState(100);
-  const [mobilePreview, setMobilePreview] = useState(false);
   const goalEntries = Object.entries(copy.goals);
   const selectedGoal = copy.goals[goalKey];
   const contributed = weekly * 52 * 5;
@@ -31,7 +30,7 @@ export default function HomepageView({ copy, language, onLanguageChange, onConti
             </div>
           </div>
           <div className="flex items-center gap-2">
-            <button type="button" onClick={() => setMobilePreview(!mobilePreview)} className="hidden min-h-12 items-center gap-2 rounded-full border border-hairline bg-surface px-3 text-xs font-semibold md:flex"><Layout size={15} />{mobilePreview ? 'Desktop' : '390px Preview'}</button>
+            <button type="button" onClick={() => onMobilePreviewChange(!mobilePreview)} className="hidden min-h-12 items-center gap-2 rounded-full border border-hairline bg-surface px-3 text-xs font-semibold md:flex"><Layout size={15} />{mobilePreview ? 'Desktop' : '390px Preview'}</button>
             <button type="button" onClick={() => onLanguageChange(language === 'en' ? 'hi' : 'en')} className="flex min-h-12 items-center gap-2 rounded-full border border-hairline bg-surface px-4 text-sm font-semibold" aria-label="Switch language"><Globe2 size={16} />{language === 'en' ? 'EN | हिंदी' : 'हिंदी | EN'}</button>
           </div>
         </div>
@@ -56,7 +55,7 @@ export default function HomepageView({ copy, language, onLanguageChange, onConti
           </section>
 
           <SpotlightCard className="p-5 sm:p-7">
-            <div className="flex items-start justify-between gap-4"><div><p className="font-mono text-xs uppercase tracking-widest text-slate">KORU / {copy.stages[stage - 1]}</p><h2 className="mt-2 font-display text-2xl font-semibold">{language === 'en' ? 'A habit, made tangible.' : 'एक आदत, जिसे महसूस किया जा सके।'}</h2></div><KoruAvatar3D stage={stage} size="sm" /></div>
+            <div className="flex items-start justify-between gap-4"><div><p className="font-mono text-xs uppercase tracking-widest text-slate">KORU / {copy.stages[stage - 1]}</p><h2 className="mt-2 font-display text-2xl font-semibold">{language === 'en' ? 'A habit, made tangible.' : 'एक आदत, जिसे महसूस किया जा सके।'}</h2></div><KoruAvatar3D stage={stage} size="sm" lowEndMode={lowEndMode} /></div>
             <div className="mt-8"><div className="flex items-end justify-between"><label htmlFor="weekly" className="text-sm font-semibold">{language === 'en' ? 'Weekly habit' : 'साप्ताहिक आदत'}</label><RollingCurrency value={weekly} className="text-2xl font-bold" /></div><input id="weekly" aria-label="Weekly habit" className="mt-4 h-12 w-full accent-jade" type="range" min="100" max="1000" step="50" value={weekly} onChange={(event) => setWeekly(Number(event.target.value))} /><div className="mt-2 flex justify-between font-mono text-xs text-slate"><span>₹100</span><span>₹1,000</span></div></div>
             <div className="mt-7 grid grid-cols-2 gap-3 rounded-xl bg-canvas p-4"><div><p className="text-xs text-slate">{copy.totalContributed}</p><p className="mt-2 text-lg font-bold"><RollingCurrency value={contributed} /></p></div><div><p className="text-xs text-slate">{copy.estimatedValue}</p><p className="mt-2 text-lg font-bold text-jade"><RollingCurrency value={illustrativeValue} /></p></div></div>
             <div className="mt-6 grid gap-2 border-t border-hairline pt-5 text-xs text-slate sm:grid-cols-3">{copy.journey.map((item) => <div key={item} className="flex items-center gap-2"><Check size={14} className="shrink-0 text-jade" />{item}</div>)}</div>
@@ -64,7 +63,6 @@ export default function HomepageView({ copy, language, onLanguageChange, onConti
         </main>
         <section className="px-4 pb-12 sm:px-8"><div className="rounded-2xl bg-obsidian p-5 text-white sm:p-7"><p className="font-mono text-xs uppercase tracking-widest text-jade">{language === 'en' ? 'One connected story' : 'एक जुड़ी हुई कहानी'}</p><div className="mt-5 grid gap-4 sm:grid-cols-3">{copy.journey.map((item, index) => <div key={item} className="flex items-center gap-3"><span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white/10 font-mono text-sm text-jade">0{index + 1}</span><span className="text-sm">{item}</span></div>)}</div></div></section>
       </div>
-      <footer className="fixed inset-x-0 bottom-0 z-30 bg-obsidian px-4 py-3 text-[12.5px] text-[#E7E5DC] sm:px-8"><div className="mx-auto max-w-7xl">{copy.disclaimer}</div></footer>
     </div>
   );
 }
