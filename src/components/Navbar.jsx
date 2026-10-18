@@ -1,6 +1,6 @@
 import { Languages, Monitor, Smartphone, Sprout } from 'lucide-react';
 
-export default function Navbar({ copy, language, surface, mobilePreview, onSurfaceHome, onMobilePreviewChange, onLanguageChange, showCallouts, onCalloutsChange }) {
+export default function Navbar({ copy, language, surface, mobilePreview, onSurfaceHome, onMobilePreviewChange, onLanguageChange }) {
   const jumpTo = (id) => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
@@ -34,9 +34,6 @@ export default function Navbar({ copy, language, surface, mobilePreview, onSurfa
           </button>}
           <button type="button" onClick={onLanguageChange} aria-label="EN ↔ हिंदी" className="flex min-h-12 items-center gap-2 rounded-full border border-hairline bg-surface px-3 text-xs font-semibold transition-transform hover:scale-[1.03]">
             <Languages size={15} aria-hidden="true" /><span className="hidden sm:inline">{language === 'en' ? 'EN | हिंदी' : 'हिंदी | EN'}</span><span className="sm:hidden">{language === 'en' ? 'EN' : 'हि'}</span>
-          </button>
-          <button type="button" onClick={() => onCalloutsChange(!showCallouts)} aria-pressed={showCallouts} className={`hidden min-h-12 rounded-full border px-3 text-xs font-semibold transition-transform hover:scale-[1.03] sm:block ${showCallouts ? 'border-gold bg-amber-50 text-obsidian' : 'border-hairline bg-surface text-slate'}`}>
-            {showCallouts ? 'Hide X-Ray' : 'X-Ray'}
           </button>
         </div>
       </div>

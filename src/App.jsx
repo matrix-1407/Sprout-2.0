@@ -14,7 +14,6 @@ export default function App() {
   const [mobilePreview, setMobilePreview] = useState(false);
   const [lowEndMode, setLowEndMode] = useState(false);
   const [deviceLowEnd, setDeviceLowEnd] = useState(false);
-  const [showCallouts, setShowCallouts] = useState(false);
   const [goal, setGoal] = useState({ key: 'emergency', title: sproutCopy.en.goals.emergency.title, amount: sproutCopy.en.goals.emergency.amount, detail: sproutCopy.en.goals.emergency.detail, weekly: 100 });
   const copy = sproutCopy[language];
   const toggleLanguage = () => setLanguage((value) => (value === 'en' ? 'hi' : 'en'));
@@ -54,8 +53,7 @@ export default function App() {
 
   return <div lang={language} className="min-h-screen overflow-x-hidden bg-canvas text-obsidian">
     {entry && <div className={`fixed inset-0 z-[60] overflow-hidden bg-canvas transition-opacity duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${landingExiting ? 'pointer-events-none opacity-0' : 'opacity-100'}`}><LandingPage copy={copy} language={language} onEnter={enterExperience} onLanguageChange={toggleLanguage} exiting={landingExiting} /></div>}
-    <Navbar copy={copy} language={language} surface={surface} mobilePreview={mobilePreview} onSurfaceHome={() => { setEntry(false); setSurface('home'); }} onMobilePreviewChange={setMobilePreview} onLanguageChange={toggleLanguage} showCallouts={showCallouts} onCalloutsChange={setShowCallouts} />
-    {showCallouts && <aside className="border-b border-gold bg-amber-50 px-4 py-3 text-xs sm:px-8"><div className="mx-auto flex max-w-7xl flex-wrap gap-x-5 gap-y-2"><strong className="font-mono uppercase tracking-widest text-gold">X-Ray</strong><span><b>CEO:</b> calm craft</span><span><b>Marketing:</b> bloom referral</span><span><b>Compliance:</b> audited footer</span><span><b>Dev:</b> low-end mode</span><span><b>Support:</b> recovery states</span></div></aside>}
+    <Navbar copy={copy} language={language} surface={surface} mobilePreview={mobilePreview} onSurfaceHome={() => { setEntry(false); setSurface('home'); }} onMobilePreviewChange={setMobilePreview} onLanguageChange={toggleLanguage} />
     {surface === 'home' && <HomepageView copy={copy} language={language} onContinue={continueToApp} lowEndMode={optimizedMode} mobilePreview={mobilePreview} onMobilePreviewChange={setMobilePreview} />}
     {surface === 'onboarding' && <OnboardingFlow copy={copy} language={language} goal={goal} onBackHome={() => setSurface('home')} onLanguageChange={toggleLanguage} lowEndMode={optimizedMode} />}
     <StickyComplianceBar copy={copy} language={language} />
