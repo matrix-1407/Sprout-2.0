@@ -4,7 +4,15 @@ Production interactive prototype for a regulated Indian micro-investing onboardi
 
 ## Current implementation
 
-- Responsive Sprout 2.0 homepage shell for desktop and mobile layouts
+- Responsive Sprout 2.0 homepage for desktop and explicit 390px mobile preview
+- Interactive micro-goal cards that synchronize the selected goal and weekly amount with onboarding
+- Continuous homepage-to-app journey with exact selected goal, amount, and language handoff
+- Five-screen connected onboarding flow inside a realistic 395px mobile frame
+- Screen jumper for evaluator walkthroughs and animated card transitions
+- Goal handoff, KYC readiness checklist, guided PAN/last-four input, live verification, and first UPI contribution states
+- Calm save-and-remind toast for missing PAN edge cases
+- Live verification heartbeat with a simulated slow-4G/registry-delay recovery state
+- Stage 5 KORU bloom celebration and post-investment referral unlock
 - English/Hindi copy switching with zero reload and Devanagari typography support
 - Sovereign Botanical Craft color tokens, typography, spacing, and accessibility-oriented touch targets
 - KORU faceted jade-and-gold mascot foundation with five growth stages
@@ -39,7 +47,7 @@ Create a production build with:
 npm run build
 ```
 
-The application entry point is [`src/main.jsx`](./src/main.jsx), with shared UI primitives in [`src/components/ui/`](./src/components/ui/) and bilingual product data and validators in [`src/config/sproutStore.js`](./src/config/sproutStore.js).
+The application entry point is [`src/main.jsx`](./src/main.jsx). The connected views are [`src/components/HomepageView.jsx`](./src/components/HomepageView.jsx) and [`src/components/OnboardingFlow.jsx`](./src/components/OnboardingFlow.jsx), with shared UI primitives in [`src/components/ui/`](./src/components/ui/) and bilingual product data and validators in [`src/config/sproutStore.js`](./src/config/sproutStore.js).
 
 ## Compliance
 
