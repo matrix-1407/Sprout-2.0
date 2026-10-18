@@ -1,67 +1,179 @@
 # Sprout 2.0
 
-Production interactive prototype for a regulated Indian micro-investing onboarding journey. The current foundation follows the **Sovereign Botanical Craft** design system and is implemented with pure JavaScript, React 18, Vite, JSX, Tailwind CSS, and `lucide-react`.
+Sprout 2.0 is a production-style interactive prototype for a mobile-first Indian micro-investing journey. It demonstrates a calm first-investment experience, bilingual English/Hindi content, guided KYC preparation, and a connected path from a web goal to a first UPI contribution.
 
-## Current implementation
+The prototype uses pure JavaScript and JSX:
 
-- Responsive Sprout 2.0 homepage for desktop and explicit 390px mobile preview
-- Four-section scrollytelling homepage with reveal transitions, community marquee, bento trust cards, and a connected story bridge
-- Full-width KORU terrarium stage with desktop proximity tilt, four depth planes, responsive growth stages, and low-end/mobile 60FPS fallback
-- Rolling principal-versus-compounding wealth comparison bar
-- Interactive micro-goal cards that synchronize the selected goal and weekly amount with onboarding
-- Continuous homepage-to-app journey with exact selected goal, amount, and language handoff
-- Five-screen connected onboarding flow inside a realistic 395px mobile frame
-- Screen jumper for evaluator walkthroughs and animated card transitions
-- Goal handoff, KYC readiness checklist, guided PAN/last-four input, live verification, and first UPI contribution states
-- Calm save-and-remind toast for missing PAN edge cases
-- Live verification heartbeat with a simulated slow-4G/registry-delay recovery state
-- Stage 5 KORU bloom celebration and post-investment referral unlock
-- Sticky SEBI compliance bar pinned across homepage, onboarding, and gallery surfaces
-- Director Dock evaluator HUD for surface, viewport, language, low-end device, and stakeholder callout controls
-- Stitch UI Mockups gallery serving all four reference screenshots from `public/stitch-screens/`
-- Vitest constraint and edge-case suite covering compliance copy, assembly, handoff, language, and PAN validation
-- English/Hindi copy switching with zero reload and Devanagari typography support
-- Sovereign Botanical Craft color tokens, typography, spacing, and accessibility-oriented touch targets
-- KORU faceted jade-and-gold mascot foundation with five growth stages
-- Desktop cursor-proximity tilt and specular highlight physics for KORU
-- Mobile and low-end-device CSS float fallback with no mouse tracking
-- Rolling Indian currency odometer for the ₹100–₹1,000 habit slider
-- Reusable radial hover `SpotlightCard`
-- PAN normalization and format validation
-- DigiLocker last-four-digit validation without collecting a full government ID
-- Automated compliance copy audit blocking forbidden financial-assurance wording
-- Pinned regulatory disclaimer treatment
+- React 18
+- Vite
+- Tailwind CSS
+- `lucide-react`
+- Vitest + Testing Library
+- No TypeScript
+- No Three.js, WebGL, video, or heavy animation runtime
 
-## Reference materials
+## Experience flow
 
-The [`design-artifacts/`](./design-artifacts/) directory contains the approved design specification and four Stitch reference screens:
+The application opens with a dedicated landing screen. The visitor can enter with the CTA, click the journey prompt, or use a downward wheel gesture. The landing curtain lifts and fades before the main site is revealed.
 
-- English desktop end-to-end onboarding
-- Hindi desktop bilingual onboarding
-- English mobile onboarding
-- Hindi mobile onboarding
+```mermaid
+flowchart TD
+    A[Landing page] -->|Begin with ₹100 / explore| B[Homepage hero]
+    B --> C[Select goal and weekly habit]
+    C --> D[Habit calculator and KORU stages]
+    D --> E[Trust marquee and feature sections]
+    E --> F[Connected journey]
+    C -->|Continue selected goal| G[Onboarding screen 1]
+    G --> H[KYC readiness checklist]
+    H --> I[PAN and DigiLocker last-four input]
+    I --> J[Live verification and recovery state]
+    J --> K[First ₹100 UPI contribution]
+    K --> L[KORU Stage 5 bloom]
+```
 
-## Development
+## Key features
+
+### Landing and homepage
+
+- Dedicated cinematic landing page shown on first load
+- Smooth landing exit transition into the homepage overview
+- Responsive editorial hero with Fraunces typography
+- Three selectable micro-goal cards:
+  - Emergency Cushion — ₹100/week
+  - Next Milestone — ₹250/week
+  - Long-Term Wealth — ₹500/week
+- Selected goal state uses high-contrast Banyan Obsidian with an emerald focus border
+- Interactive ₹100–₹1,000 weekly habit slider
+- Indian-formatted rolling currency values
+- Five-year principal versus illustrative market-linked comparison
+- Infinite trust/product marquee
+- Scroll-reveal sections for security and journey content
+- Explicit 390px mobile preview mode
+
+### KORU sculpture
+
+- Frameless CSS/SVG botanical sculpture
+- Four CSS 3D depth planes
+- Emerald, obsidian, jade, and Sovereign Gold facets
+- Stage evolution from seed to crown bloom
+- Cursor-proximity tilt on capable desktop devices
+- No visible orange orbit node
+- Touch/mobile and low-end fallback without mouse listeners
+- CSS breathing animation in optimized mode
+
+### Connected onboarding
+
+- Five-screen responsive mobile frame
+- Website goal and amount handoff
+- PAN/mobile readiness checklist
+- Missing-PAN save-and-remind state
+- PAN normalization and format feedback
+- DigiLocker simulation using only the last four mobile digits
+- Verification heartbeat and registry checklist
+- Slow-4G/registry-delay recovery UI
+- First ₹100 UPI contribution state
+- Stage 5 KORU bloom and referral state
+
+### Localization and compliance
+
+- English and Hindi Devanagari dictionaries
+- Instant language switching without a page reload
+- Devanagari line-height protection against clipped matras
+- `auditComplianceCopy()` scans nested copy dictionaries
+- Forbidden financial-assurance wording is rejected:
+  - `guaranteed`
+  - `safe`
+  - `risk-free`
+  - `risk free`
+- Sticky regulatory disclaimer on every application surface
+- Disclaimer font size explicitly set to `12.5px`
+- No full government ID is requested or stored
+
+## Project structure
+
+```text
+src/
+├── App.jsx
+├── index.css
+├── config/
+│   └── sproutStore.js
+├── components/
+│   ├── LandingPage.jsx
+│   ├── Navbar.jsx
+│   ├── HomepageView.jsx
+│   ├── OnboardingFlow.jsx
+│   ├── StickyComplianceBar.jsx
+│   └── ui/
+│       ├── InfiniteTrustTicker.jsx
+│       ├── KoruAvatar3D.jsx
+│       ├── RollingCurrency.jsx
+│       ├── RollingOdometer.jsx
+│       ├── ScrollReveal.jsx
+│       ├── SpotlightCard.jsx
+│       └── ...
+├── __tests__/
+│   ├── setup.js
+│   └── sprout.test.jsx
+└── main.jsx
+```
+
+The approved Stitch references and screenshots live in [`design-artifacts/`](./design-artifacts/). Static gallery screenshots are served from [`public/stitch-screens/`](./public/stitch-screens/).
+
+## Setup
+
+Requirements:
+
+- Node.js 18 or newer
+- npm 9 or newer
+
+Install dependencies:
 
 ```bash
 npm install
+```
+
+Start the Vite development server:
+
+```bash
 npm run dev
 ```
 
-Create a production build with:
+Open the local URL printed by Vite, normally `http://localhost:5173`.
+
+Create a production build:
 
 ```bash
 npm run build
 ```
 
-Run the automated verification suite with:
+Run the automated tests:
+
+```bash
+npm run test
+```
+
+The equivalent direct command is:
 
 ```bash
 npx vitest run
 ```
 
-The application entry point is [`src/main.jsx`](./src/main.jsx). The connected views are [`src/components/HomepageView.jsx`](./src/components/HomepageView.jsx) and [`src/components/OnboardingFlow.jsx`](./src/components/OnboardingFlow.jsx), with shared UI primitives in [`src/components/ui/`](./src/components/ui/) and bilingual product data and validators in [`src/config/sproutStore.js`](./src/config/sproutStore.js).
+## Verification
 
-## Compliance
+The current production build has been validated with:
 
-The prototype copy is audited through `auditComplianceCopy()`. The audit rejects occurrences of `guaranteed`, `safe`, `risk-free`, and `risk free`. Investment projections shown in the prototype are illustrative only and are paired with the regulatory disclaimer.
+- 5/5 Vitest tests passing
+- Vite production build passing
+- No broken imports
+- No build warnings
+- Browser smoke testing of landing entry, homepage scrolling, goal selection, KORU stage changes, Hindi switching, and onboarding handoff
+
+The latest generated bundle is approximately 62 KB gzipped JavaScript and 7 KB gzipped CSS. These values are build-output observations, not product claims.
+
+## Important implementation notes
+
+- The document remains the single native scroll surface. The landing curtain is fixed only during the entry transition and does not create a second scroll container.
+- Horizontal clipping is applied to the React app shell rather than `html` or `body` so vertical document scrolling remains reliable.
+- `ScrollReveal` uses `IntersectionObserver` and immediately reveals content when the API is unavailable or optimized mode is active.
+- KORU checks `(hover: hover) and (min-width: 768px)` before registering cursor physics.
+- All buttons and form controls meet the 48px minimum touch-target requirement through component classes and global input/button rules.
