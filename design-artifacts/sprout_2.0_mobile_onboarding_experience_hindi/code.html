@@ -1,0 +1,774 @@
+<!DOCTYPE html><html lang="hi"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"><meta content="mobile_blank" name="shell-type"><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500;600;700&amp;family=Noto+Sans+Devanagari:wght@400;500;600;700&amp;family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<style>@layer base{html,body{width:100vw;margin:0;padding:0;}body{overscroll-behavior:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "surface-container-highest": "#d5e7dc", "on-primary": "#ffffff", "background": "#ebfef3", "surface": "#ebfef3", "surface-container-low": "#e6f8ed", "outline": "#727974", "on-surface-variant": "#424844", "inverse-on-surface": "#e3f5ea", "on-tertiary-container": "#c96d00", "on-primary-fixed": "#092017", "on-primary-fixed-variant": "#354c41", "on-error-container": "#93000a", "tertiary": "#070200", "on-tertiary-fixed-variant": "#6e3900", "surface-container-high": "#daece2", "surface-container-lowest": "#ffffff", "error-container": "#ffdad6", "inverse-primary": "#b3ccbe", "primary-container": "#0a2118", "primary-fixed-dim": "#b3ccbe", "on-background": "#0f1f18", "on-secondary-fixed": "#002113", "on-surface": "#0f1f18", "secondary": "#006c49", "tertiary-fixed": "#ffdcc3", "on-primary-container": "#728a7e", "primary": "#000302", "on-tertiary-fixed": "#2f1500", "outline-variant": "#c2c8c3", "secondary-container": "#6cf8bb", "tertiary-container": "#311600", "surface-variant": "#d5e7dc", "on-secondary-container": "#00714d", "on-error": "#ffffff", "error": "#ba1a1a", "primary-fixed": "#cee9da", "tertiary-fixed-dim": "#ffb77d", "surface-dim": "#ccded4", "surface-container": "#e0f2e7", "surface-tint": "#4c6358", "surface-bright": "#ebfef3", "secondary-fixed": "#6ffbbe", "on-tertiary": "#ffffff", "inverse-surface": "#24342d", "secondary-fixed-dim": "#4edea3", "on-secondary": "#ffffff", "on-secondary-fixed-variant": "#005236" }, borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, spacing: { "space-xs": "0.25rem", "space-2xl": "3.5rem", "space-lg": "1.5rem", "margin-desktop": "3rem", "gutter-tablet": "1.5rem", "space-md": "1rem", "gutter-desktop": "2rem", "margin-tablet": "2rem", "margin": "1rem", "gutter": "1rem", "space-sm": "0.5rem", "space-xl": "2.25rem" }, fontFamily: { "legal-disclaimer": ["Noto Sans Devanagari", "Plus Jakarta Sans"], "headline-md": ["Noto Sans Devanagari", "Plus Jakarta Sans"], "headline-xl": ["Noto Sans Devanagari", "Plus Jakarta Sans"], "body-sm": ["Noto Sans Devanagari", "Plus Jakarta Sans"], "label-mono-lg": ["JetBrains Mono"], "label-mono-sm": ["JetBrains Mono"], "headline-sm": ["Noto Sans Devanagari", "Plus Jakarta Sans"], "headline-lg": ["Noto Sans Devanagari", "Plus Jakarta Sans"], "body-md": ["Noto Sans Devanagari", "Plus Jakarta Sans"], "headline-xl-mobile": ["Noto Sans Devanagari", "Plus Jakarta Sans"], "body-lg": ["Noto Sans Devanagari", "Plus Jakarta Sans"] }, fontSize: { "legal-disclaimer": ["12.5px", { lineHeight: "18.5px", letterSpacing: "0.01em", fontWeight: "400" }], "headline-md": ["22px", { lineHeight: "33px", letterSpacing: "-0.01em", fontWeight: "600" }], "headline-xl": ["40px", { lineHeight: "58px", letterSpacing: "-0.02em", fontWeight: "700" }], "body-sm": ["13px", { lineHeight: "19.5px", fontWeight: "500" }], "label-mono-lg": ["18px", { lineHeight: "24px", letterSpacing: "0.08em", fontWeight: "600" }], "label-mono-sm": ["12px", { lineHeight: "17.5px", letterSpacing: "0.04em", fontWeight: "500" }], "headline-sm": ["18px", { lineHeight: "27px", fontWeight: "600" }], "headline-lg": ["28px", { lineHeight: "41px", letterSpacing: "-0.015em", fontWeight: "600" }], "body-md": ["14px", { lineHeight: "21px", fontWeight: "400" }], "headline-xl-mobile": ["32px", { lineHeight: "47px", letterSpacing: "-0.02em", fontWeight: "700" }], "body-lg": ["16px", { lineHeight: "24px", fontWeight: "400" }] } } } };</script><style>
+    body {
+      min-height: max(884px, 100dvh);
+      line-height: 1.48;
+    }
+    .devanagari-leading {
+      line-height: 1.48;
+    }
+  </style>
+</head><body class="bg-surface font-body-md text-body-md text-on-surface antialiased flex flex-col min-h-screen pt-safe pb-safe"><main class="flex flex-col relative w-full bg-surface px-margin min-h-screen"><div class="flex flex-col w-full">
+<!-- Pinned / Sticky Top Mobile Navigation Bar -->
+<header class="sticky top-0 z-30 bg-surface/95 backdrop-blur-md pb-space-xs pt-space-xs">
+<div class="flex items-center justify-between py-space-xs">
+<!-- Back Button -->
+<button aria-label="Go Back" class="w-12 h-12 flex items-center justify-center rounded-full bg-surface-container hover:bg-surface-container-high transition-colors active:scale-95 text-on-surface shrink-0" id="navBackBtn">
+<span class="material-symbols-outlined text-body-lg">arrow_back</span>
+</button>
+<!-- Center Progress Pill -->
+<div class="flex flex-col items-center gap-1">
+<div class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container-high shadow-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse"></span>
+<span class="font-headline-sm text-[12.5px] leading-tight text-secondary font-semibold tracking-wide" id="stepCounterLabel">चरण 1 / 5</span>
+</div>
+<!-- 5-segment micro progress tracker -->
+<div class="flex items-center gap-1 w-28 h-1.5">
+<div class="flex-1 h-full rounded-full bg-secondary transition-all duration-300" id="progBar1"></div>
+<div class="flex-1 h-full rounded-full bg-surface-container-highest transition-all duration-300" id="progBar2"></div>
+<div class="flex-1 h-full rounded-full bg-surface-container-highest transition-all duration-300" id="progBar3"></div>
+<div class="flex-1 h-full rounded-full bg-surface-container-highest transition-all duration-300" id="progBar4"></div>
+<div class="flex-1 h-full rounded-full bg-surface-container-highest transition-all duration-300" id="progBar5"></div>
+</div>
+</div>
+<!-- Bilingual Language Toggle: Hindi Active -->
+<button class="h-11 px-3 rounded-full bg-surface-container-high flex items-center gap-1 text-on-surface font-body-sm text-[12.5px] font-semibold active:scale-95 transition-transform shadow-sm shrink-0" id="langToggleBtn">
+<span class="text-on-surface-variant font-medium" id="langEnTag">EN</span>
+<span class="text-outline-variant">|</span>
+<span class="text-secondary font-bold" id="langHiTag">हिंदी (सक्रिय)</span>
+</button>
+</div>
+<!-- Regulated Live Status Strip -->
+<div class="flex items-center justify-between px-3 py-1.5 rounded-lg bg-surface-container-low mt-1 shadow-sm">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-secondary text-sm" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant font-medium" id="statusSyncLabel">हैंडऑफ सिंक हुआ • सेबी AMFI ARN-259124 • 256-बिट</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-outline text-xs">lock</span>
+<span class="font-label-mono-sm text-label-mono-sm text-on-surface-variant">256-BIT</span>
+</div>
+</div>
+</header>
+<!-- Interactive Stage Container -->
+<div class="flex flex-col w-full py-space-sm pb-24">
+<!-- ================= STAGE 1: WEB-TO-APP GOAL HANDOFF (Rooted Seed) ================= -->
+<section class="flex flex-col gap-4" id="stage1Card">
+<!-- Mascot Hero Tile -->
+<div class="relative w-full rounded-xl bg-surface-container-lowest p-space-md shadow-sm flex flex-col items-center text-center overflow-hidden">
+<div class="w-20 h-20 rounded-full bg-surface-container-high flex items-center justify-center mb-2 shadow-inner relative">
+<!-- Geometric Koru Seed SVG (Stage 1) -->
+<svg class="w-12 h-12 text-secondary" fill="none" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+<path d="M32 10C24 10 18 16 18 24C18 36 32 54 32 54C32 54 46 36 46 24C46 16 40 10 32 10Z" fill="#0A2118"></path>
+<path d="M32 20C29 20 27 22 27 25C27 30 32 38 32 38C32 38 37 30 37 25C37 22 35 20 32 20Z" fill="#D97706"></path>
+<circle cx="32" cy="24" fill="#6CF8BB" r="3"></circle>
+</svg>
+<span class="absolute -top-1 -right-1 flex h-4 w-4">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary-container opacity-75"></span>
+<span class="relative inline-flex rounded-full h-4 w-4 bg-secondary"></span>
+</span>
+</div>
+<div class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-surface-container-high text-secondary font-body-sm text-[12px] mb-1.5 font-semibold">
+<span class="material-symbols-outlined text-xs">savings</span>
+<span id="stg1KoruBadge">कोरू चरण 1: अंकुरित बीज (ROOTED SEED)</span>
+</div>
+<h1 class="font-headline-sm text-headline-sm text-primary font-bold devanagari-leading" id="stg1Title">आपका ₹100 का इमरजेंसी कुशन तैयार है।</h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant max-w-xs mt-1 devanagari-leading" id="stg1Sub">वेबसाइट लक्ष्य से सुरक्षित रूप से सिंक किया गया। बिना किसी लॉक-इन के कभी भी समायोजित करें।</p>
+<!-- Synced Fund Security Badge -->
+<div class="mt-3 w-full p-2.5 rounded-lg bg-surface-container-low flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-secondary flex items-center justify-center text-on-primary shrink-0">
+<span class="material-symbols-outlined text-sm">security</span>
+</div>
+<div class="text-left">
+<p class="font-body-sm text-body-sm text-on-surface font-semibold devanagari-leading">लिक्विड फंड बास्केट</p>
+<p class="font-body-sm text-[12px] text-on-surface-variant devanagari-leading">24×7 त्वरित बैंक निकासी</p>
+</div>
+</div>
+<span class="px-2 py-1 rounded bg-surface-container-highest text-secondary font-body-sm text-[11.5px] font-bold shrink-0">0% एग्जिट लोड</span>
+</div>
+</div>
+<!-- Plan Selector (3 Presets) -->
+<div class="flex flex-col gap-2">
+<label class="font-body-sm text-body-sm font-semibold text-on-surface devanagari-leading" id="chooseHabitLabel">बचत की गति चुनें</label>
+<div class="grid grid-cols-3 gap-2">
+<!-- Plan A: Selected -->
+<button class="plan-card min-h-[76px] p-2 rounded-xl bg-surface-container-lowest shadow-sm flex flex-col items-center justify-center text-center transition-all bg-primary-container text-on-primary active:scale-95" id="planBtn1" onclick="selectPlan(100, this)">
+<span class="font-body-sm text-[12px] font-semibold text-secondary-container">कुशन</span>
+<span class="font-label-mono-lg text-label-mono-lg font-bold">₹100</span>
+<span class="font-body-sm text-[11px] opacity-80 devanagari-leading">/हफ़्ता</span>
+</button>
+<!-- Plan B -->
+<button class="plan-card min-h-[76px] p-2 rounded-xl bg-surface-container-lowest shadow-sm flex flex-col items-center justify-center text-center transition-all text-on-surface hover:bg-surface-container-high active:scale-95" id="planBtn2" onclick="selectPlan(250, this)">
+<span class="font-body-sm text-[12px] font-semibold text-on-surface-variant">माइलस्टोन</span>
+<span class="font-label-mono-lg text-label-mono-lg font-bold">₹250</span>
+<span class="font-body-sm text-[11px] text-on-surface-variant devanagari-leading">/हफ़्ता</span>
+</button>
+<!-- Plan C -->
+<button class="plan-card min-h-[76px] p-2 rounded-xl bg-surface-container-lowest shadow-sm flex flex-col items-center justify-center text-center transition-all text-on-surface hover:bg-surface-container-high active:scale-95" id="planBtn3" onclick="selectPlan(500, this)">
+<span class="font-body-sm text-[12px] font-semibold text-on-surface-variant">वेल्थ</span>
+<span class="font-label-mono-lg text-label-mono-lg font-bold">₹500</span>
+<span class="font-body-sm text-[11px] text-on-surface-variant devanagari-leading">/हफ़्ता</span>
+</button>
+</div>
+</div>
+<!-- Interactive Rolling Habits Slider -->
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<span class="font-body-sm text-body-sm text-on-surface-variant font-medium devanagari-leading" id="customSliderLabel">साप्ताहिक बचत राशि (Weekly Deposit):</span>
+<span class="font-label-mono-lg text-label-mono-lg text-primary font-bold" id="sliderValueDisp">₹100</span>
+</div>
+<input class="w-full h-2 bg-surface-container-highest rounded-lg appearance-none cursor-pointer accent-secondary" id="depositRange" max="1000" min="100" step="50" type="range" value="100">
+<div class="flex items-center justify-between pt-1">
+<span class="font-body-sm text-[12px] text-outline devanagari-leading">₹100 (शुरुआती)</span>
+<span class="font-body-sm text-[12px] text-outline devanagari-leading">₹1,000 (सॉवरेन)</span>
+</div>
+<!-- Calculated Rolling Corpus Projection -->
+<div class="p-3 rounded-lg bg-surface-container flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-body-sm text-[12px] text-on-surface-variant font-medium devanagari-leading" id="fiveYrProjTitle">अनुमानित 5-वर्षीय कॉर्पस</span>
+<span class="font-label-mono-lg text-label-mono-lg text-secondary font-bold" id="corpusVal">₹34,450*</span>
+</div>
+<div class="text-right">
+<span class="px-2 py-0.5 rounded bg-surface-container-highest font-body-sm text-[12px] text-on-surface-variant font-semibold devanagari-leading">11.0% वार्षिक ब्याज*</span>
+<p class="font-legal-disclaimer text-legal-disclaimer text-outline text-[11px] mt-0.5 devanagari-leading">ऐतिहासिक संदर्भ*</p>
+</div>
+</div>
+</div>
+<!-- Direct AMFI Integration Trust Strip -->
+<div class="flex items-center justify-center gap-2 text-on-surface-variant font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-secondary text-sm">hub</span>
+<span class="devanagari-leading" id="amfiBadgeTxt">प्रत्यक्ष AMFI एकीकरण • 0% मध्यस्थ कमीशन</span>
+</div>
+<!-- CTA (min 52px Touch Target) -->
+<button class="w-full min-h-[54px] py-3 px-4 rounded-xl bg-primary text-on-primary font-headline-sm text-headline-sm font-semibold flex items-center justify-center gap-2 shadow-md active:scale-98 transition-transform" onclick="goToStage(2)">
+<span id="stg1Cta">60-सेकंड केवाईसी शुरू करें →</span>
+</button>
+</section>
+<!-- ================= STAGE 2: "ZERO-SURPRISE" DOCUMENT READINESS ================= -->
+<section class="hidden flex-col gap-4" id="stage2Card">
+<!-- Mascot Evolution Halo (Shielded Stem) -->
+<div class="w-full rounded-xl bg-surface-container-lowest p-space-md shadow-sm flex flex-col items-center text-center">
+<div class="w-20 h-20 rounded-full bg-surface-container-high flex items-center justify-center mb-2 shadow-inner relative">
+<svg class="w-12 h-12 text-secondary" fill="none" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+<path d="M32 6L48 14V28C48 40 32 56 32 56C32 56 16 40 16 28V14L32 6Z" fill="#0A2118"></path>
+<path d="M32 18C28 18 24 22 24 28C24 38 32 46 32 46C32 46 40 38 40 28C40 22 36 18 32 18Z" fill="#D97706"></path>
+<path d="M28 28C28 24 32 20 32 20C32 20 36 24 36 28C36 34 32 38 32 38C32 38 28 34 28 28Z" fill="#6CF8BB"></path>
+</svg>
+<span class="absolute bottom-0 right-0 w-6 h-6 rounded-full bg-secondary text-on-primary flex items-center justify-center text-xs">
+<span class="material-symbols-outlined text-xs">shield</span>
+</span>
+</div>
+<div class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-surface-container-high text-on-tertiary-container font-label-mono-sm text-label-mono-sm mb-1.5 font-semibold">
+<span class="material-symbols-outlined text-xs">shield</span>
+<span id="stg2KoruBadge">कोरू विकास: सुरक्षित तना (द्वितीय चरण)</span>
+</div>
+<h2 class="font-headline-sm text-headline-sm text-primary font-bold devanagari-leading" id="stg2Title">शुरू करने से पहले: ये 2 चीजें पास रखें।</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant max-w-xs mt-1 devanagari-leading" id="stg2Sub">हम पहले से पूछते हैं ताकि बीच में कोई रुकावट न आए।</p>
+</div>
+<!-- Checklist Interactive Items (>= 56px height) -->
+<div class="flex flex-col gap-2.5">
+<!-- Checklist 1: PAN -->
+<div class="min-h-[64px] p-space-sm px-space-md rounded-xl bg-surface-container-lowest shadow-sm flex items-center justify-between cursor-pointer active:scale-98 transition-transform" onclick="toggleCheckItem('chk1')">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-secondary text-on-primary flex items-center justify-center transition-colors shrink-0" id="chkBox1">
+<span class="material-symbols-outlined text-sm font-bold">check</span>
+</div>
+<div class="flex flex-col">
+<span class="font-body-md text-body-md text-on-surface font-semibold devanagari-leading" id="chk1Title">10-अक्षरीय पैन कार्ड नंबर</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant devanagari-leading" id="chk1Sub">SEBI और NSDL वैधानिक सत्यापन हेतु</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline">badge</span>
+</div>
+<!-- Checklist 2: Aadhaar OTP Phone -->
+<div class="min-h-[64px] p-space-sm px-space-md rounded-xl bg-surface-container-lowest shadow-sm flex items-center justify-between cursor-pointer active:scale-98 transition-transform" onclick="toggleCheckItem('chk2')">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-secondary text-on-primary flex items-center justify-center transition-colors shrink-0" id="chkBox2">
+<span class="material-symbols-outlined text-sm font-bold">check</span>
+</div>
+<div class="flex flex-col">
+<span class="font-body-md text-body-md text-on-surface font-semibold devanagari-leading" id="chk2Title">आधार से जुड़ा मोबाइल फोन</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant devanagari-leading" id="chk2Sub">तुरंत 1-क्लिक डिजीलॉकर OTP सत्यापन हेतु</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline">smartphone</span>
+</div>
+</div>
+<!-- Time estimate strip -->
+<div class="p-3 rounded-lg bg-surface-container-low flex items-center justify-center gap-2 text-on-surface font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-secondary text-sm">schedule</span>
+<span class="devanagari-leading" id="timeEstLabel">औसत ऑनबोर्डिंग समय: <strong>48 सेकंड</strong></span>
+</div>
+<!-- Primary CTA -->
+<button class="w-full min-h-[54px] rounded-xl bg-primary text-on-primary font-headline-sm text-headline-sm font-semibold flex items-center justify-center gap-2 shadow-md active:scale-98 transition-transform" id="stg2ContinueBtn" onclick="goToStage(3)">
+<span id="stg2Cta">मेरे पास दोनों तैयार हैं — आगे बढ़ें</span>
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+<!-- Secondary Non-blocking Fallback (>= 48px) -->
+<button class="w-full min-h-[48px] px-3 rounded-xl bg-surface-container hover:bg-surface-container-high text-on-surface font-body-sm text-body-sm font-medium flex items-center justify-center gap-2 active:scale-98 transition-transform" onclick="scheduleReminder()">
+<span class="material-symbols-outlined text-sm">alarm</span>
+<span class="devanagari-leading" id="stg2Remind">पैन अभी नहीं है? मुझे रात 8 बजे याद दिलाएं</span>
+</button>
+</section>
+<!-- ================= STAGE 3: REGULATED KYC INPUT ================= -->
+<section class="hidden flex-col gap-4" id="stage3Card">
+<div class="w-full rounded-xl bg-surface-container-lowest p-space-md shadow-sm flex flex-col items-center text-center">
+<div class="w-20 h-20 rounded-full bg-surface-container-high flex items-center justify-center mb-2 shadow-inner">
+<!-- Geometric Koru Stage 3: Unfurling Leaf -->
+<svg class="w-12 h-12" fill="none" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+<path d="M32 54C32 54 20 40 20 28C20 18 30 10 32 10C34 10 44 18 44 28C44 40 32 54 32 54Z" fill="#0A2118"></path>
+<path d="M32 10C24 18 24 30 32 38C40 30 40 18 32 10Z" fill="#6CF8BB"></path>
+<path d="M28 26C28 22 32 18 32 18C32 18 36 22 36 26C36 32 32 36 32 36C32 36 28 32 28 26Z" fill="#D97706"></path>
+</svg>
+</div>
+<div class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-surface-container-high text-secondary font-label-mono-sm text-label-mono-sm mb-1.5 font-semibold">
+<span class="material-symbols-outlined text-xs">local_florist</span>
+<span id="stg3KoruBadge">कोरू विकास: खिलती पत्ती (तृतीय चरण)</span>
+</div>
+<h2 class="font-headline-sm text-headline-sm text-primary font-bold devanagari-leading" id="stg3Title">विनियमित निवेशक सत्यापन</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant max-w-xs mt-1 devanagari-leading" id="stg3Sub">एकमुश्त SEBI पंजीकरण। डिजीलॉकर द्वारा तुरंत सत्यापित।</p>
+</div>
+<!-- Form Inputs Card -->
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm flex flex-col gap-3.5">
+<!-- Input 1: PAN -->
+<div class="flex flex-col gap-1.5">
+<div class="flex items-center justify-between">
+<label class="font-body-sm text-body-sm font-semibold text-on-surface devanagari-leading" id="panLabel">स्थायी खाता संख्या (PAN)</label>
+<span class="hidden items-center gap-1 font-label-mono-sm text-label-mono-sm text-secondary font-semibold" id="panCheckPill">
+<span class="material-symbols-outlined text-xs font-bold">verified</span> वैध प्रारूप
+            </span>
+</div>
+<div class="relative w-full">
+<input class="w-full h-14 px-4 rounded-xl bg-surface-container-low text-primary font-label-mono-lg text-label-mono-lg tracking-widest uppercase focus:outline-none focus:bg-surface-container font-semibold" id="panInput" maxlength="10" oninput="formatPan(this)" placeholder="ABCDE1234F" type="text" value="BNZPA4921K">
+<span class="material-symbols-outlined absolute right-4 top-4 text-secondary">check_circle</span>
+</div>
+<span class="font-legal-disclaimer text-legal-disclaimer text-on-surface-variant devanagari-leading">सभी म्यूचुअल फंड फोलियो के लिए सेबी मास्टर सर्कुलर 2024 द्वारा अनिवार्य।</span>
+</div>
+<!-- Input 2: Aadhaar Last 4 Digits -->
+<div class="flex flex-col gap-1.5">
+<label class="font-body-sm text-body-sm font-semibold text-on-surface devanagari-leading" id="aadhaarLabel">आधार के अंतिम 4 अंक (डिजीलॉकर जांच)</label>
+<div class="relative w-full">
+<input class="w-full h-14 px-4 rounded-xl bg-surface-container-low text-primary font-label-mono-lg text-label-mono-lg tracking-widest focus:outline-none focus:bg-surface-container font-semibold" id="aadhaarInput" maxlength="4" placeholder="•••• 8821" type="tel" value="8821">
+<span class="material-symbols-outlined absolute right-4 top-4 text-outline">lock</span>
+</div>
+</div>
+<!-- Trust & Cryptographic Storage Pill -->
+<div class="p-3 rounded-lg bg-surface-container-low flex items-start gap-2.5">
+<span class="material-symbols-outlined text-secondary text-base shrink-0 mt-0.5">verified_user</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-snug devanagari-leading" id="cryptoTrustTxt">
+<strong>शून्य डेटा संग्रहण:</strong> स्प्राउट आपके आधार दस्तावेज़ संग्रहित नहीं करता। सत्यापन सीधे भारत सरकार की एजेंसियों द्वारा होता है।
+          </p>
+</div>
+</div>
+<!-- Consent Agreement -->
+<label class="flex items-start gap-3 px-1 cursor-pointer">
+<input checked="" class="mt-1 w-5 h-5 rounded accent-secondary shrink-0" type="checkbox">
+<span class="font-legal-disclaimer text-legal-disclaimer text-on-surface-variant devanagari-leading" id="consentText">
+          मैं स्प्राउट को PMLA नियमों के तहत SEBI-पंजीकृत KRA और डिजीलॉकर से KYC विवरण प्राप्त करने की अनुमति देता/देती हूँ।
+        </span>
+</label>
+<!-- Primary CTA -->
+<button class="w-full min-h-[54px] rounded-xl bg-primary text-on-primary font-headline-sm text-headline-sm font-semibold flex items-center justify-center gap-2 shadow-md active:scale-98 transition-transform" onclick="goToStage(4)">
+<span id="stg3Cta">डिजीलॉकर से तुरंत सत्यापित करें</span>
+<span class="material-symbols-outlined">bolt</span>
+</button>
+</section>
+<!-- ================= STAGE 4: "ANTI-FREEZE" LIVE TELEMETRY STATE ================= -->
+<section class="hidden flex-col gap-4" id="stage4Card">
+<div class="w-full rounded-xl bg-surface-container-lowest p-space-md shadow-sm flex flex-col items-center text-center">
+<div class="w-20 h-20 rounded-full bg-surface-container-high flex items-center justify-center mb-2 shadow-inner relative">
+<svg class="w-12 h-12 animate-pulse" fill="none" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+<path d="M32 56C32 56 16 42 16 28C16 16 26 8 32 8C38 8 48 16 48 28C48 42 32 56 32 56Z" fill="#0A2118"></path>
+<path d="M32 8C20 18 20 32 32 42C44 32 44 18 32 8Z" fill="#10B981"></path>
+<path d="M32 20C26 24 26 30 32 34C38 30 38 24 32 20Z" fill="#D97706"></path>
+<circle cx="32" cy="18" fill="#6CF8BB" r="4"></circle>
+</svg>
+</div>
+<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container-high text-on-tertiary-container font-label-mono-sm text-label-mono-sm mb-1.5 font-bold">
+<span class="w-2 h-2 rounded-full bg-on-tertiary-container animate-ping"></span>
+<span id="stg4KoruBadge">कोरू विकास: बढ़ता हुआ पौधा (चतुर्थ चरण)</span>
+</div>
+<h2 class="font-headline-sm text-headline-sm text-primary font-bold devanagari-leading" id="stg4Title">रजिस्ट्री डेटा सिंक्रनाइज़ हो रहा है</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant max-w-xs mt-1 devanagari-leading" id="stg4Sub">कृपया इस विंडो को खुला रखें जब तक हम आपका म्यूचुअल फंड फोलियो सुरक्षित करते हैं।</p>
+<!-- Live Heartbeat / Latency Badge -->
+<div class="mt-3 px-3 py-1.5 rounded-full bg-surface-container flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-sm animate-spin">sync</span>
+<span class="font-body-sm text-[12px] text-on-surface font-semibold devanagari-leading" id="telemetryTimer">बीता समय: 4s / ~10s • नेटवर्क सामान्य</span>
+</div>
+</div>
+<!-- Live 3-Step Vertical Telemetry Checklist -->
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm flex flex-col gap-3">
+<!-- Step A: Complete -->
+<div class="flex items-start gap-3 p-2.5 rounded-lg bg-surface-container-low">
+<div class="w-6 h-6 rounded-full bg-secondary text-on-primary flex items-center justify-center shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-xs font-bold">check</span>
+</div>
+<div class="flex flex-col">
+<span class="font-body-sm text-body-sm text-on-surface font-semibold devanagari-leading" id="telStep1">आयकर व NSDL से पैन सत्यापन पूर्ण</span>
+<span class="font-body-sm text-[12px] text-secondary font-medium devanagari-leading">रिकॉर्ड सक्रिय • व्यक्तिगत स्थिति सत्यापित</span>
+</div>
+</div>
+<!-- Step B: In Progress -->
+<div class="flex items-start gap-3 p-2.5 rounded-lg bg-surface-container-low border-l-4 border-on-tertiary-container">
+<div class="w-6 h-6 rounded-full bg-tertiary-fixed text-on-tertiary-fixed-variant flex items-center justify-center shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-xs animate-spin font-bold">autorenew</span>
+</div>
+<div class="flex flex-col">
+<span class="font-body-sm text-body-sm text-on-surface font-semibold devanagari-leading" id="telStep2">डिजीलॉकर क्रिप्टोग्राफिक हैंडशेक</span>
+<span class="font-body-sm text-[12px] text-on-tertiary-container font-medium devanagari-leading">सत्यापित पहचान टोकन प्राप्त हो रहा है (प्रगति पर...)</span>
+</div>
+</div>
+<!-- Step C: Pending -->
+<div class="flex items-start gap-3 p-2.5 rounded-lg bg-surface-container-low opacity-60">
+<div class="w-6 h-6 rounded-full bg-surface-container-highest text-on-surface flex items-center justify-center shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-xs">hourglass_empty</span>
+</div>
+<div class="flex flex-col">
+<span class="font-body-sm text-body-sm text-on-surface font-semibold devanagari-leading" id="telStep3">शून्य-कमीशन म्यूचुअल फंड फोलियो सक्रियण</span>
+<span class="font-body-sm text-[12px] text-on-surface-variant font-medium devanagari-leading">त्वरित आवंटन हेतु कतार में है</span>
+</div>
+</div>
+</div>
+<!-- Anti-Freeze Timeout Fallback Note -->
+<div class="p-3 rounded-lg bg-surface-container flex items-start gap-2.5">
+<span class="material-symbols-outlined text-outline text-base shrink-0 mt-0.5">info</span>
+<p class="font-legal-disclaimer text-legal-disclaimer text-on-surface-variant devanagari-leading" id="timeoutNotice">
+<strong>धीमा नेटवर्क सुरक्षा:</strong> यदि 12 सेकंड से अधिक समय लगता है तो आपका अनुरोध कतार में सुरक्षित है। स्वीकृत होते ही व्हाट्सएप पर संदेश मिलेगा।
+        </p>
+</div>
+<!-- Demo / Simulation Fast Forward Button -->
+<button class="w-full min-h-[54px] rounded-xl bg-primary text-on-primary font-headline-sm text-headline-sm font-semibold flex items-center justify-center gap-2 shadow-md active:scale-98 transition-transform" onclick="goToStage(5)">
+<span id="stg4Cta">सत्यापन पूर्ण हुआ → आगे बढ़ें</span>
+<span class="material-symbols-outlined">fast_forward</span>
+</button>
+</section>
+<!-- ================= STAGE 5: FIRST ₹100 UPI INVESTMENT & FULL BLOOM ================= -->
+<section class="hidden flex-col gap-4" id="stage5Card">
+<div class="w-full rounded-xl bg-surface-container-lowest p-space-md shadow-sm flex flex-col items-center text-center relative overflow-hidden">
+<!-- Confetti Accent Gradient -->
+<div class="absolute inset-x-0 -top-12 h-28 bg-gradient-to-b from-secondary-container/40 to-transparent pointer-events-none"></div>
+<div class="w-24 h-24 rounded-full bg-surface-container-high flex items-center justify-center mb-2 shadow-md relative">
+<svg class="w-16 h-16" fill="none" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+<path d="M32 4C32 4 14 18 14 34C14 48 24 58 32 60C40 58 50 48 50 34C50 18 32 4 32 4Z" fill="#0A2118"></path>
+<path d="M32 10C22 20 20 34 32 46C44 34 42 20 32 10Z" fill="#10B981"></path>
+<circle cx="32" cy="28" fill="#F59E0B" r="8"></circle>
+<path d="M32 20L34 26L40 28L34 30L32 36L30 30L24 28L30 26L32 20Z" fill="#FFFFFF"></path>
+</svg>
+<span class="absolute -bottom-1 -right-1 w-7 h-7 rounded-full bg-secondary text-on-primary flex items-center justify-center text-sm shadow">
+<span class="material-symbols-outlined text-sm font-bold">verified</span>
+</span>
+</div>
+<div class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-surface-container-high text-secondary font-label-mono-sm text-label-mono-sm mb-1.5 font-bold">
+<span class="material-symbols-outlined text-xs">stars</span>
+<span id="stg5KoruBadge">कोरू विकास: पूर्ण स्वर्णिम पुष्प (पंचम चरण)</span>
+</div>
+<h2 class="font-headline-sm text-headline-sm text-primary font-bold devanagari-leading" id="stg5Title">फोलियो तैयार! अपना पहला ₹100 जमा करें।</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant max-w-xs mt-1 devanagari-leading" id="stg5Sub">SEBI अधिकृत फोलियो <strong>#SP-884920</strong> आपके नाम आवंटित हुआ।</p>
+</div>
+<!-- Order Summary Card -->
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm flex flex-col gap-3">
+<div class="flex items-center justify-between pb-2 border-b border-surface-container">
+<div class="flex flex-col">
+<span class="font-body-md text-body-md font-bold text-on-surface devanagari-leading" id="summaryBasketTitle">आपातकालीन कुशन फंड बास्केट</span>
+<span class="font-body-sm text-[12px] text-on-surface-variant devanagari-leading">तुरंत 24×7 निकासी सक्षम</span>
+</div>
+<span class="font-label-mono-lg text-label-mono-lg font-bold text-secondary" id="firstDepAmt">₹100</span>
+</div>
+<!-- Selectable Native UPI Apps Grid -->
+<span class="font-body-sm text-body-sm font-semibold text-on-surface devanagari-leading" id="selectUpiLabel">त्वरित भुगतान विधि चुनें</span>
+<div class="grid grid-cols-2 gap-2">
+<!-- GPay -->
+<button class="upi-option min-h-[48px] px-3 rounded-xl bg-surface-container-high flex items-center justify-between text-on-surface active:scale-95 transition-all" onclick="selectUpi(this, 'Google Pay')">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-sm">payments</span>
+<span class="font-body-sm text-body-sm font-semibold">Google Pay</span>
+</div>
+<span class="upi-check material-symbols-outlined text-xs text-secondary font-bold">radio_button_checked</span>
+</button>
+<!-- PhonePe -->
+<button class="upi-option min-h-[48px] px-3 rounded-xl bg-surface-container flex items-center justify-between text-on-surface active:scale-95 transition-all" onclick="selectUpi(this, 'PhonePe')">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-outline text-sm">account_balance_wallet</span>
+<span class="font-body-sm text-body-sm font-semibold">PhonePe</span>
+</div>
+<span class="upi-check material-symbols-outlined text-xs text-outline font-bold">radio_button_unchecked</span>
+</button>
+<!-- Paytm UPI -->
+<button class="upi-option min-h-[48px] px-3 rounded-xl bg-surface-container flex items-center justify-between text-on-surface active:scale-95 transition-all" onclick="selectUpi(this, 'Paytm')">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-outline text-sm">smartphone</span>
+<span class="font-body-sm text-body-sm font-semibold">Paytm UPI</span>
+</div>
+<span class="upi-check material-symbols-outlined text-xs text-outline font-bold">radio_button_unchecked</span>
+</button>
+<!-- BHIM / Any UPI ID -->
+<button class="upi-option min-h-[48px] px-3 rounded-xl bg-surface-container flex items-center justify-between text-on-surface active:scale-95 transition-all" onclick="selectUpi(this, 'BHIM / Custom UPI')">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-outline text-sm">qr_code_2</span>
+<span class="font-body-sm text-body-sm font-semibold">BHIM UPI</span>
+</div>
+<span class="upi-check material-symbols-outlined text-xs text-outline font-bold">radio_button_unchecked</span>
+</button>
+</div>
+</div>
+<!-- Unlocked Milestone Referral Delight Banner -->
+<div class="p-3.5 rounded-xl bg-surface-container-high flex items-center gap-3 shadow-sm">
+<div class="w-10 h-10 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined">card_giftcard</span>
+</div>
+<div class="flex flex-col">
+<span class="font-body-sm text-body-sm font-bold text-on-surface devanagari-leading" id="referralTitle">अनलॉक: मित्र के लिए ₹50 बीज उपहार</span>
+<span class="font-legal-disclaimer text-legal-disclaimer text-on-surface-variant devanagari-leading" id="referralSub">पहला भुगतान पूरा होते ही अपना लिंक साझा करें।</span>
+</div>
+</div>
+<!-- Affirmative Mint Jade Primary CTA (54px) -->
+<button class="w-full min-h-[54px] py-3 px-4 rounded-xl bg-secondary text-on-primary font-headline-sm text-headline-sm font-bold flex items-center justify-center gap-2 shadow-md active:scale-98 transition-transform" onclick="completePaymentSimulation()">
+<span id="stg5Cta">UPI से ₹100 चुकाएं और कोरू खिलाएं</span>
+<span class="material-symbols-outlined">energy_savings_leaf</span>
+</button>
+</section>
+</div>
+<!-- Pinned Statutory SEBI / AMFI Risk Disclaimer Baseline Footer (12.5px font size) -->
+<footer class="sticky bottom-0 z-20 w-full bg-surface-container-high/95 backdrop-blur-md py-2.5 px-3 rounded-t-xl shadow-inner text-center">
+<p class="font-legal-disclaimer text-[12.5px] leading-[18.5px] text-on-surface-variant" id="sebiDisclaimer">
+सेबी और AMFI पंजीकृत म्यूचुअल फंड वितरक (ARN-259124)। म्यूचुअल फंड निवेश बाजार के जोखिमों के अधीन हैं, योजना से जुड़े सभी दस्तावेजों को ध्यान से पढ़ें। पिछला प्रदर्शन भविष्य के रिटर्न का संकेतक नहीं है।
+    </p>
+</footer>
+</div>
+<script>
+  let currentStage = 1;
+  let currentLang = 'HI';
+  let selectedDeposit = 100;
+
+  const copyStore = {
+    HI: {
+      stepLabel: (s) => `चरण ${s} / 5`,
+      handoffLabel: "हैंडऑफ सिंक हुआ • सेबी AMFI ARN-259124 • 256-बिट",
+      stg1Title: "आपका ₹100 का इमरजेंसी कुशन तैयार है।",
+      stg1Sub: "वेबसाइट लक्ष्य से सुरक्षित रूप से सिंक किया गया। बिना किसी लॉक-इन के कभी भी समायोजित करें।",
+      stg1KoruBadge: "कोरू चरण 1: अंकुरित बीज (ROOTED SEED)",
+      chooseHabitLabel: "बचत की गति चुनें",
+      customSliderLabel: "साप्ताहिक बचत राशि (Weekly Deposit):",
+      fiveYrProjTitle: "अनुमानित 5-वर्षीय कॉर्पस",
+      amfiBadgeTxt: "प्रत्यक्ष AMFI एकीकरण • 0% मध्यस्थ कमीशन",
+      stg1Cta: "60-सेकंड केवाईसी शुरू करें →",
+      stg2Title: "शुरू करने से पहले: ये 2 चीजें पास रखें।",
+      stg2Sub: "हम पहले से पूछते हैं ताकि बीच में कोई रुकावट न आए।",
+      stg2KoruBadge: "कोरू विकास: सुरक्षित तना (द्वितीय चरण)",
+      chk1Title: "10-अक्षरीय पैन कार्ड नंबर",
+      chk1Sub: "SEBI और NSDL वैधानिक सत्यापन हेतु",
+      chk2Title: "आधार से जुड़ा मोबाइल फोन",
+      chk2Sub: "तुरंत 1-क्लिक डिजीलॉकर OTP सत्यापन हेतु",
+      timeEstLabel: "औसत ऑनबोर्डिंग समय: <strong>48 सेकंड</strong>",
+      stg2Cta: "मेरे पास दोनों तैयार हैं — आगे बढ़ें",
+      stg2Remind: "पैन अभी नहीं है? मुझे रात 8 बजे याद दिलाएं",
+      stg3Title: "विनियमित निवेशक सत्यापन",
+      stg3Sub: "एकमुश्त SEBI पंजीकरण। डिजीलॉकर द्वारा तुरंत सत्यापित।",
+      stg3KoruBadge: "कोरू विकास: खिलती पत्ती (तृतीय चरण)",
+      panLabel: "स्थायी खाता संख्या (PAN)",
+      aadhaarLabel: "आधार के अंतिम 4 अंक (डिजीलॉकर जांच)",
+      cryptoTrustTxt: "<strong>शून्य डेटा संग्रहण:</strong> स्प्राउट आपके आधार दस्तावेज़ संग्रहित नहीं करता। सत्यापन सीधे भारत सरकार की एजेंसियों द्वारा होता है।",
+      consentText: "मैं स्प्राउट को PMLA नियमों के तहत SEBI-पंजीकृत KRA और डिजीलॉकर से KYC विवरण प्राप्त करने की अनुमति देता/देती हूँ।",
+      stg3Cta: "डिजीलॉकर से तुरंत सत्यापित करें",
+      stg4Title: "रजिस्ट्री डेटा सिंक्रनाइज़ हो रहा है",
+      stg4Sub: "कृपया इस विंडो को खुला रखें जब तक हम आपका म्यूचुअल फंड फोलियो सुरक्षित करते हैं।",
+      stg4KoruBadge: "कोरू विकास: बढ़ता हुआ पौधा (चतुर्थ चरण)",
+      telStep1: "आयकर व NSDL से पैन सत्यापन पूर्ण",
+      telStep2: "डिजीलॉकर क्रिप्टोग्राफिक हैंडशेक प्रगति पर",
+      telStep3: "शून्य-कमीशन म्यूचुअल फंड फोलियो सक्रियण",
+      timeoutNotice: "<strong>धीमा नेटवर्क सुरक्षा:</strong> यदि 12 सेकंड से अधिक समय लगता है तो आपका अनुरोध कतार में सुरक्षित है। स्वीकृत होते ही व्हाट्सएप पर संदेश मिलेगा।",
+      stg4Cta: "सत्यापन पूर्ण हुआ → आगे बढ़ें",
+      stg5Title: "फोलियो तैयार! अपना पहला ₹100 जमा करें।",
+      stg5Sub: "SEBI अधिकृत फोलियो <strong>#SP-884920</strong> आपके नाम आवंटित हुआ।",
+      stg5KoruBadge: "कोरू विकास: पूर्ण स्वर्णिम पुष्प (पंचम चरण)",
+      summaryBasketTitle: "आपातकालीन कुशन फंड बास्केट",
+      selectUpiLabel: "त्वरित भुगतान विधि चुनें",
+      referralTitle: "अनलॉक: मित्र के लिए ₹50 बीज उपहार",
+      referralSub: "पहला भुगतान पूरा होते ही अपना लिंक साझा करें।",
+      stg5Cta: "UPI से ₹100 चुकाएं और कोरू खिलाएं",
+      sebiDisclaimer: "सेबी और AMFI पंजीकृत म्यूचुअल फंड वितरक (ARN-259124)। म्यूचुअल फंड निवेश बाजार के जोखिमों के अधीन हैं, योजना से जुड़े सभी दस्तावेजों को ध्यान से पढ़ें। पिछला प्रदर्शन भविष्य के रिटर्न का संकेतक नहीं है।"
+    },
+    EN: {
+      stepLabel: (s) => `Step ${s} of 5`,
+      handoffLabel: "HANDOFF SYNCED • SEBI AMFI ARN-259124 • 256-BIT",
+      stg1Title: "Your ₹100 Weekly Cushion is ready.",
+      stg1Sub: "Imported securely from your web goal setting session. Adjust anytime without lock-in.",
+      stg1KoruBadge: "KORU EVOLUTION: ROOTED SEED",
+      chooseHabitLabel: "Choose Contribution Pace",
+      customSliderLabel: "Fine-tune Weekly Deposit:",
+      fiveYrProjTitle: "Est. 5-Yr Growth Corpus",
+      amfiBadgeTxt: "Direct AMFI Integration • 0% Middleman Commission",
+      stg1Cta: "Proceed to 60-Sec KYC Check →",
+      stg2Title: "Before we begin: Keep these 2 items handy.",
+      stg2Sub: "We ask upfront so you never hit roadblocks mid-verification.",
+      stg2KoruBadge: "KORU EVOLUTION: SHIELDED STEM",
+      chk1Title: "10-Character PAN Card",
+      chk1Sub: "SEBI & NSDL statutory verification",
+      chk2Title: "Aadhaar-Linked Mobile Phone",
+      chk2Sub: "Instant 1-click DigiLocker OTP fetch",
+      timeEstLabel: "Average onboarding duration: <strong>48 seconds</strong>",
+      stg2Cta: "I Have Both Ready — Continue",
+      stg2Remind: "Don't have PAN right now? Remind me at 8 PM",
+      stg3Title: "Regulated Investor Verification",
+      stg3Sub: "One-time SEBI registration. Synced instantaneously via DigiLocker.",
+      stg3KoruBadge: "KORU EVOLUTION: UNFURLING LEAF",
+      panLabel: "Permanent Account Number (PAN)",
+      aadhaarLabel: "Last 4 Digits of Aadhaar (DigiLocker Query)",
+      cryptoTrustTxt: "<strong>Zero Storage Mandate:</strong> Sprout does not store your Aadhaar or documents. Verification happens directly against Government of India registries.",
+      consentText: "I authorize Sprout Financial to fetch my KYC records from SEBI-registered KRAs (CVL / NDML / CAMS) and DigiLocker as per PMLA guidelines.",
+      stg3Cta: "Verify Instantly via DigiLocker",
+      stg4Title: "Synchronizing with Registries",
+      stg4Sub: "Please keep this window open while we secure your mutual fund folio.",
+      stg4KoruBadge: "KORU EVOLUTION: PULSING SUNLIT SPROUT",
+      telStep1: "Validating PAN with Income Tax & NSDL",
+      telStep2: "DigiLocker Cryptographic Handshake",
+      telStep3: "Activating 0%-Commission Mutual Fund Folio",
+      timeoutNotice: "<strong>4G Network Guarantee:</strong> Taking longer than 12s due to registry load? Your verification is safely buffered in queue. You will receive an immediate WhatsApp notification the second it completes.",
+      stg4Cta: "Instant Verification Verified → Continue",
+      stg5Title: "Folio Ready! Plant Your First ₹100.",
+      stg5Sub: "SEBI Regulated Folio <strong>#SP-884920</strong> assigned to your name.",
+      stg5KoruBadge: "KORU EVOLUTION: FULL SOVEREIGN BLOOM",
+      summaryBasketTitle: "Emergency Cushion Basket",
+      selectUpiLabel: "Select Fast Payment Method",
+      referralTitle: "Unlocked: ₹50 Seed Gift For a Friend",
+      referralSub: "Share your invite link once your first contribution completes.",
+      stg5Cta: "Pay ₹100 via UPI & Bloom Your Koru",
+      sebiDisclaimer: "SEBI & AMFI Registered Mutual Fund Distributor (ARN-259124). Mutual fund investments are subject to market risks. Read all scheme related documents carefully before investing. Past performance is not indicative of future returns."
+    }
+  };
+
+  function updateUIText() {
+    const t = copyStore[currentLang];
+    document.getElementById('stepCounterLabel').innerText = t.stepLabel(currentStage);
+    document.getElementById('statusSyncLabel').innerText = t.handoffLabel;
+
+    document.getElementById('stg1Title').innerText = t.stg1Title;
+    document.getElementById('stg1Sub').innerText = t.stg1Sub;
+    document.getElementById('stg1KoruBadge').innerText = t.stg1KoruBadge;
+    document.getElementById('chooseHabitLabel').innerText = t.chooseHabitLabel;
+    document.getElementById('customSliderLabel').innerText = t.customSliderLabel;
+    document.getElementById('fiveYrProjTitle').innerText = t.fiveYrProjTitle;
+    document.getElementById('amfiBadgeTxt').innerText = t.amfiBadgeTxt;
+    document.getElementById('stg1Cta').innerText = t.stg1Cta;
+
+    document.getElementById('stg2Title').innerText = t.stg2Title;
+    document.getElementById('stg2Sub').innerText = t.stg2Sub;
+    document.getElementById('stg2KoruBadge').innerText = t.stg2KoruBadge;
+    document.getElementById('chk1Title').innerText = t.chk1Title;
+    document.getElementById('chk1Sub').innerText = t.chk1Sub;
+    document.getElementById('chk2Title').innerText = t.chk2Title;
+    document.getElementById('chk2Sub').innerText = t.chk2Sub;
+    document.getElementById('timeEstLabel').innerHTML = t.timeEstLabel;
+    document.getElementById('stg2Cta').innerText = t.stg2Cta;
+    document.getElementById('stg2Remind').innerText = t.stg2Remind;
+
+    document.getElementById('stg3Title').innerText = t.stg3Title;
+    document.getElementById('stg3Sub').innerText = t.stg3Sub;
+    document.getElementById('stg3KoruBadge').innerText = t.stg3KoruBadge;
+    document.getElementById('panLabel').innerText = t.panLabel;
+    document.getElementById('aadhaarLabel').innerText = t.aadhaarLabel;
+    document.getElementById('cryptoTrustTxt').innerHTML = t.cryptoTrustTxt;
+    document.getElementById('consentText').innerText = t.consentText;
+    document.getElementById('stg3Cta').innerText = t.stg3Cta;
+
+    document.getElementById('stg4Title').innerText = t.stg4Title;
+    document.getElementById('stg4Sub').innerText = t.stg4Sub;
+    document.getElementById('stg4KoruBadge').innerText = t.stg4KoruBadge;
+    document.getElementById('telStep1').innerText = t.telStep1;
+    document.getElementById('telStep2').innerText = t.telStep2;
+    document.getElementById('telStep3').innerText = t.telStep3;
+    document.getElementById('timeoutNotice').innerHTML = t.timeoutNotice;
+    document.getElementById('stg4Cta').innerText = t.stg4Cta;
+
+    document.getElementById('stg5Title').innerText = t.stg5Title;
+    document.getElementById('stg5Sub').innerHTML = t.stg5Sub;
+    document.getElementById('stg5KoruBadge').innerText = t.stg5KoruBadge;
+    document.getElementById('summaryBasketTitle').innerText = t.summaryBasketTitle;
+    document.getElementById('selectUpiLabel').innerText = t.selectUpiLabel;
+    document.getElementById('referralTitle').innerText = t.referralTitle;
+    document.getElementById('referralSub').innerText = t.referralSub;
+    document.getElementById('stg5Cta').innerText = t.stg5Cta;
+    document.getElementById('sebiDisclaimer').innerHTML = t.sebiDisclaimer;
+  }
+
+  // Language toggle listener
+  document.getElementById('langToggleBtn').addEventListener('click', () => {
+    currentLang = currentLang === 'HI' ? 'EN' : 'HI';
+    const enTag = document.getElementById('langEnTag');
+    const hiTag = document.getElementById('langHiTag');
+    if (currentLang === 'HI') {
+      hiTag.className = 'text-secondary font-bold';
+      hiTag.innerText = 'हिंदी (सक्रिय)';
+      enTag.className = 'text-on-surface-variant font-medium';
+      enTag.innerText = 'EN';
+    } else {
+      enTag.className = 'text-secondary font-bold';
+      enTag.innerText = 'EN (Active)';
+      hiTag.className = 'text-on-surface-variant font-medium';
+      hiTag.innerText = 'हिंदी';
+    }
+    updateUIText();
+  });
+
+  // Navigation Logic
+  function goToStage(stageNum) {
+    if (stageNum < 1 || stageNum > 5) return;
+    currentStage = stageNum;
+
+    for (let i = 1; i <= 5; i++) {
+      const card = document.getElementById(`stage${i}Card`);
+      if (card) {
+        if (i === stageNum) {
+          card.classList.remove('hidden');
+          card.classList.add('flex');
+        } else {
+          card.classList.add('hidden');
+          card.classList.remove('flex');
+        }
+      }
+
+      const bar = document.getElementById(`progBar${i}`);
+      if (bar) {
+        if (i <= stageNum) {
+          bar.classList.remove('bg-surface-container-highest');
+          bar.classList.add('bg-secondary');
+        } else {
+          bar.classList.remove('bg-secondary');
+          bar.classList.add('bg-surface-container-highest');
+        }
+      }
+    }
+
+    // Scroll smoothly to top of stage
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    updateUIText();
+  }
+
+  // Header Back Button
+  document.getElementById('navBackBtn').addEventListener('click', () => {
+    if (currentStage > 1) {
+      goToStage(currentStage - 1);
+    }
+  });
+
+  // Slider Calculation
+  const slider = document.getElementById('depositRange');
+  const sliderValueDisp = document.getElementById('sliderValueDisp');
+  const corpusVal = document.getElementById('corpusVal');
+  const firstDepAmt = document.getElementById('firstDepAmt');
+
+  function calculateCorpus(weekly) {
+    const weeks = 52 * 5;
+    const weeklyRate = 0.11 / 52;
+    let total = 0;
+    for (let w = 0; w < weeks; w++) {
+      total = (total + weekly) * (1 + weeklyRate);
+    }
+    return Math.round(total).toLocaleString('en-IN');
+  }
+
+  slider.addEventListener('input', (e) => {
+    selectedDeposit = parseInt(e.target.value, 10);
+    sliderValueDisp.innerText = `₹${selectedDeposit}`;
+    corpusVal.innerText = `₹${calculateCorpus(selectedDeposit)}*`;
+    if (firstDepAmt) firstDepAmt.innerText = `₹${selectedDeposit}`;
+    
+    // Clear active states on buttons
+    document.querySelectorAll('.plan-card').forEach(btn => {
+      btn.classList.remove('bg-primary-container', 'text-on-primary');
+      btn.classList.add('text-on-surface');
+    });
+  });
+
+  function selectPlan(amt, el) {
+    selectedDeposit = amt;
+    slider.value = amt;
+    sliderValueDisp.innerText = `₹${amt}`;
+    corpusVal.innerText = `₹${calculateCorpus(amt)}*`;
+    if (firstDepAmt) firstDepAmt.innerText = `₹${amt}`;
+
+    document.querySelectorAll('.plan-card').forEach(btn => {
+      btn.classList.remove('bg-primary-container', 'text-on-primary');
+      btn.classList.add('text-on-surface');
+    });
+    el.classList.add('bg-primary-container', 'text-on-primary');
+    el.classList.remove('text-on-surface');
+  }
+
+  // Checklist Item Toggle
+  let chkState1 = true;
+  let chkState2 = true;
+
+  function toggleCheckItem(id) {
+    if (id === 'chk1') {
+      chkState1 = !chkState1;
+      const b = document.getElementById('chkBox1');
+      if (chkState1) {
+        b.className = "w-8 h-8 rounded-lg bg-secondary text-on-primary flex items-center justify-center transition-colors shrink-0";
+        b.innerHTML = '<span class="material-symbols-outlined text-sm font-bold">check</span>';
+      } else {
+        b.className = "w-8 h-8 rounded-lg bg-surface-container-highest text-outline flex items-center justify-center transition-colors shrink-0";
+        b.innerHTML = '';
+      }
+    } else {
+      chkState2 = !chkState2;
+      const b = document.getElementById('chkBox2');
+      if (chkState2) {
+        b.className = "w-8 h-8 rounded-lg bg-secondary text-on-primary flex items-center justify-center transition-colors shrink-0";
+        b.innerHTML = '<span class="material-symbols-outlined text-sm font-bold">check</span>';
+      } else {
+        b.className = "w-8 h-8 rounded-lg bg-surface-container-highest text-outline flex items-center justify-center transition-colors shrink-0";
+        b.innerHTML = '';
+      }
+    }
+
+    const continueBtn = document.getElementById('stg2ContinueBtn');
+    if (!chkState1 && !chkState2) {
+      continueBtn.classList.add('opacity-50');
+    } else {
+      continueBtn.classList.remove('opacity-50');
+    }
+  }
+
+  function scheduleReminder() {
+    alert(currentLang === 'HI' ? "रिमाइंडर सेट किया गया! आज रात 8:00 बजे आपको व्हाट्सएप संदेश प्राप्त होगा।" : "Reminder scheduled! You will receive a WhatsApp nudge at 8:00 PM tonight.");
+  }
+
+  // PAN Input Formatter
+  function formatPan(el) {
+    el.value = el.value.toUpperCase();
+    const pill = document.getElementById('panCheckPill');
+    const panRegex = /^[A-Z]{5}[0-9]{4}[A-Z]{1}$/;
+    if (panRegex.test(el.value)) {
+      pill.classList.remove('hidden');
+      pill.classList.add('flex');
+    } else {
+      pill.classList.add('hidden');
+      pill.classList.remove('flex');
+    }
+  }
+
+  // Select UPI Method
+  function selectUpi(buttonElement, name) {
+    document.querySelectorAll('.upi-option').forEach(btn => {
+      btn.classList.remove('bg-surface-container-high');
+      btn.classList.add('bg-surface-container');
+      const icon = btn.querySelector('.upi-check');
+      icon.innerText = 'radio_button_unchecked';
+      icon.classList.remove('text-secondary');
+      icon.classList.add('text-outline');
+    });
+    buttonElement.classList.remove('bg-surface-container');
+    buttonElement.classList.add('bg-surface-container-high');
+    const activeIcon = buttonElement.querySelector('.upi-check');
+    activeIcon.innerText = 'radio_button_checked';
+    activeIcon.classList.remove('text-outline');
+    activeIcon.classList.add('text-secondary');
+  }
+
+  function completePaymentSimulation() {
+    alert(currentLang === 'HI' ? "बधाई! ₹100 जमा हो गए हैं। आपका कोरू अब खिल चुका है!" : "Congratulations! ₹100 weekly cushion activated. Your Koru has reached full bloom!");
+  }
+</script></main></body></html>

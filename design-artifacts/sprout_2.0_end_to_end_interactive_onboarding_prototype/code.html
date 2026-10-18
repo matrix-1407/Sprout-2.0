@@ -1,0 +1,1286 @@
+<!DOCTYPE html><html class="h-full" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Koru Micro-Invest — Interactive Onboarding Prototype</title>
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100..900&amp;family=Plus+Jakarta+Sans:wght@100..900&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "on-primary": "#ffffff",
+            "secondary": "#006c49",
+            "on-error": "#ffffff",
+            "secondary-fixed": "#6ffbbe",
+            "surface-variant": "#d5e7dc",
+            "on-secondary": "#ffffff",
+            "surface": "#ebfef3",
+            "on-tertiary": "#ffffff",
+            "surface-container": "#e0f2e7",
+            "tertiary-fixed": "#ffdcc3",
+            "on-secondary-container": "#00714d",
+            "primary": "#000302",
+            "surface-bright": "#ebfef3",
+            "secondary-container": "#6cf8bb",
+            "on-tertiary-fixed-variant": "#6e3900",
+            "error-container": "#ffdad6",
+            "tertiary": "#070200",
+            "on-error-container": "#93000a",
+            "primary-container": "#0a2118",
+            "on-primary-container": "#728a7e",
+            "surface-tint": "#4c6358",
+            "tertiary-container": "#311600",
+            "error": "#ba1a1a",
+            "on-background": "#0f1f18",
+            "on-secondary-fixed-variant": "#005236",
+            "inverse-primary": "#b3ccbe",
+            "on-secondary-fixed": "#002113",
+            "tertiary-fixed-dim": "#ffb77d",
+            "secondary-fixed-dim": "#4edea3",
+            "on-primary-fixed": "#092017",
+            "surface-container-highest": "#d5e7dc",
+            "on-tertiary-fixed": "#2f1500",
+            "surface-container-low": "#e6f8ed",
+            "inverse-surface": "#24342d",
+            "primary-fixed-dim": "#b3ccbe",
+            "outline-variant": "#c2c8c3",
+            "surface-container-high": "#daece2",
+            "on-surface": "#0f1f18",
+            "on-tertiary-container": "#c96d00",
+            "on-surface-variant": "#424844",
+            "surface-container-lowest": "#ffffff",
+            "primary-fixed": "#cee9da",
+            "surface-dim": "#ccded4",
+            "inverse-on-surface": "#e3f5ea",
+            "on-primary-fixed-variant": "#354c41",
+            "outline": "#727974",
+            "background": "#ebfef3"
+          },
+          borderRadius: {
+            DEFAULT: "0.25rem",
+            lg: "0.5rem",
+            xl: "0.75rem",
+            full: "9999px"
+          },
+          fontFamily: {
+            "headline-lg": ["Plus Jakarta Sans"],
+            "legal-disclaimer": ["Plus Jakarta Sans"],
+            "body-lg": ["Plus Jakarta Sans"],
+            "headline-xl-mobile": ["Plus Jakarta Sans"],
+            "label-mono-lg": ["JetBrains Mono"],
+            "label-mono-sm": ["JetBrains Mono"],
+            "body-md": ["Plus Jakarta Sans"],
+            "body-sm": ["Plus Jakarta Sans"],
+            "headline-xl": ["Plus Jakarta Sans"],
+            "headline-sm": ["Plus Jakarta Sans"],
+            "headline-md": ["Plus Jakarta Sans"],
+            serif: ["Fraunces", "serif"],
+            mono: ["JetBrains Mono", "monospace"]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #ebfef3;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #c2c8c3;
+      border-radius: 9999px;
+    }
+    @keyframes pulse-ring {
+      0% { transform: scale(0.95); opacity: 0.8; }
+      50% { transform: scale(1.15); opacity: 0.3; }
+      100% { transform: scale(0.95); opacity: 0.8; }
+    }
+    .bloom-pulse {
+      animation: pulse-ring 2.4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+  </style>
+</head>
+<body class="h-full bg-background text-on-surface font-body-md antialiased selection:bg-secondary-fixed selection:text-on-secondary-fixed">
+<!-- Top Global App Bar (Master Shared Navigation) -->
+<header class="sticky top-0 z-40 bg-surface-container-lowest/90 backdrop-blur-md border-b border-surface-container-highest px-4 sm:px-8 py-3">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+<div class="flex items-center gap-3 w-full md:w-auto justify-between md:justify-start">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded-lg bg-primary-container flex items-center justify-center text-secondary-fixed shadow-sm">
+<svg class="size-5" fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M42.4379 44C42.4379 44 36.0744 33.9038 41.1692 24C46.8624 12.9336 42.2078 4 42.2078 4L7.01134 4C7.01134 4 11.6577 12.932 5.96912 23.9969C0.876273 33.9029 7.27094 44 7.27094 44L42.4379 44Z" fill="currentColor"></path>
+</svg>
+</div>
+<div>
+<h1 class="text-on-surface font-bold text-base sm:text-lg tracking-tight leading-none flex items-center gap-2">
+              Koru Micro-Invest
+              <span class="text-[11px] font-mono uppercase px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-fixed font-bold tracking-wider">SEBI Regulated</span>
+</h1>
+<p class="text-xs text-on-surface-variant font-medium">Auto-pilot wealth handoff engine</p>
+</div>
+</div>
+<!-- Mobile View Toggle Pill -->
+<div class="flex md:hidden bg-surface-container rounded-lg p-1 border border-outline-variant/40">
+<button class="px-2.5 py-1 text-xs font-semibold rounded bg-surface-container-lowest text-primary shadow-sm" id="mobileViewSimBtn" onclick="switchView('sim')">Sim</button>
+<button class="px-2.5 py-1 text-xs font-semibold rounded text-on-surface-variant" id="mobileViewBoardBtn" onclick="switchView('storyboard')">Board</button>
+</div>
+</div>
+<!-- Desktop View Toggles + Simulator Controls -->
+<div class="flex items-center gap-3 w-full md:w-auto justify-between md:justify-end">
+<div class="hidden sm:flex items-center gap-1 bg-surface-container p-1 rounded-xl border border-outline-variant/50">
+<button class="flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-primary-container text-surface-container-lowest shadow-sm" id="btnViewSimulator" onclick="switchView('sim')">
+<span class="material-symbols-outlined text-sm">smartphone</span>
+            Flow Simulator
+          </button>
+<button class="flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-bold transition-all text-on-surface-variant hover:text-on-surface" id="btnViewStoryboard" onclick="switchView('storyboard')">
+<span class="material-symbols-outlined text-sm">grid_view</span>
+            5-Stage Storyboard
+          </button>
+</div>
+<div class="flex items-center gap-2">
+<button class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-container hover:bg-surface-container-high border border-outline-variant/60 text-xs font-semibold text-on-surface transition-colors" onclick="resetFlow()">
+<span class="material-symbols-outlined text-sm">restart_alt</span>
+<span class="hidden sm:inline">Reset Demo</span>
+</button>
+<a class="px-2.5 py-1.5 text-xs text-on-surface-variant hover:text-primary font-medium flex items-center gap-1" href="#risk-disclaimer">
+<span class="material-symbols-outlined text-sm">verified_user</span>
+            AMFI #ARN-289410
+          </a>
+</div>
+</div>
+</div>
+<!-- Stepper Navigation Bar -->
+<div class="max-w-7xl mx-auto mt-3 pt-2.5 border-t border-surface-container">
+<div class="flex items-center justify-between gap-1 overflow-x-auto pb-1 custom-scrollbar text-xs">
+<button class="step-nav-pill flex items-center gap-2 px-3 py-1.5 rounded-lg font-bold border transition-all bg-primary-container text-surface-container-lowest border-primary-container shadow-sm shrink-0" id="step-nav-1" onclick="navigateToStep(1)">
+<span class="w-5 h-5 rounded-full bg-secondary-fixed text-on-secondary-fixed text-[11px] font-mono flex items-center justify-center font-bold">1</span>
+<span>Goal Handoff</span>
+</button>
+<div class="w-4 h-px bg-outline-variant shrink-0"></div>
+<button class="step-nav-pill flex items-center gap-2 px-3 py-1.5 rounded-lg font-medium border border-transparent text-on-surface-variant hover:bg-surface-container shrink-0" id="step-nav-2" onclick="navigateToStep(2)">
+<span class="w-5 h-5 rounded-full bg-surface-container-highest text-on-surface-variant text-[11px] font-mono flex items-center justify-center font-semibold">2</span>
+<span>Readiness Checklist</span>
+</button>
+<div class="w-4 h-px bg-outline-variant shrink-0"></div>
+<button class="step-nav-pill flex items-center gap-2 px-3 py-1.5 rounded-lg font-medium border border-transparent text-on-surface-variant hover:bg-surface-container shrink-0" id="step-nav-3" onclick="navigateToStep(3)">
+<span class="w-5 h-5 rounded-full bg-surface-container-highest text-on-surface-variant text-[11px] font-mono flex items-center justify-center font-semibold">3</span>
+<span>Regulated KYC</span>
+</button>
+<div class="w-4 h-px bg-outline-variant shrink-0"></div>
+<button class="step-nav-pill flex items-center gap-2 px-3 py-1.5 rounded-lg font-medium border border-transparent text-on-surface-variant hover:bg-surface-container shrink-0" id="step-nav-4" onclick="navigateToStep(4)">
+<span class="w-5 h-5 rounded-full bg-surface-container-highest text-on-surface-variant text-[11px] font-mono flex items-center justify-center font-semibold">4</span>
+<span>Live Telemetry</span>
+</button>
+<div class="w-4 h-px bg-outline-variant shrink-0"></div>
+<button class="step-nav-pill flex items-center gap-2 px-3 py-1.5 rounded-lg font-medium border border-transparent text-on-surface-variant hover:bg-surface-container shrink-0" id="step-nav-5" onclick="navigateToStep(5)">
+<span class="w-5 h-5 rounded-full bg-surface-container-highest text-on-surface-variant text-[11px] font-mono flex items-center justify-center font-semibold">5</span>
+<span>₹100 UPI Bloom</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Live Toast Notification Container -->
+<div class="fixed top-20 right-4 z-50 transform translate-x-96 opacity-0 transition-all duration-300 pointer-events-none max-w-sm" id="toastNotification">
+<div class="bg-primary-container text-surface-container-lowest p-4 rounded-xl shadow-2xl border border-secondary/40 flex items-start gap-3">
+<span class="material-symbols-outlined text-secondary-fixed text-xl mt-0.5">mark_chat_read</span>
+<div class="flex-1">
+<p class="text-xs font-mono uppercase tracking-wider text-secondary-fixed font-bold" id="toastHeading">Reminder Scheduled</p>
+<p class="text-xs mt-0.5 text-surface-variant font-medium leading-relaxed" id="toastMessage">Reminder set for 8:00 PM via SMS/WhatsApp.</p>
+</div>
+<button class="text-outline-variant hover:text-surface-container-lowest" onclick="hideToast()">
+<span class="material-symbols-outlined text-sm">close</span>
+</button>
+</div>
+</div>
+<!-- MAIN WRAPPER -->
+<main class="max-w-7xl mx-auto px-4 sm:px-6 py-6 pb-20">
+<!-- ========================================== -->
+<!-- VIEW MODE 1: INTERACTIVE FLOW SIMULATOR   -->
+<!-- ========================================== -->
+<section class="flex flex-col items-center justify-center min-h-[740px]" id="simulatorContainer">
+<!-- Phone Mockup Device Chassis -->
+<div class="relative w-full max-w-[430px] bg-surface-container-lowest rounded-[42px] shadow-[0_25px_60px_-15px_rgba(10,33,24,0.18)] border-[6px] border-primary-container overflow-hidden flex flex-col">
+<!-- Phone Hardware Top Notch / Island -->
+<div class="bg-primary-container px-6 pt-3 pb-2 text-surface-container-lowest flex items-center justify-between select-none">
+<span class="text-xs font-mono font-bold tracking-tight" id="phoneClock">09:41</span>
+<div class="w-20 h-4 bg-primary rounded-full flex items-center justify-center gap-1.5">
+<div class="size-1.5 rounded-full bg-secondary-fixed animate-ping"></div>
+<div class="size-1.5 rounded-full bg-surface-container"></div>
+</div>
+<div class="flex items-center gap-1.5 text-xs">
+<span class="material-symbols-outlined text-xs">signal_cellular_4_bar</span>
+<span class="material-symbols-outlined text-xs">wifi</span>
+<span class="material-symbols-outlined text-xs">battery_full</span>
+</div>
+</div>
+<!-- Phone In-App Minimal Subheader -->
+<div class="px-5 py-3 border-b border-surface-container flex items-center justify-between bg-surface-container-lowest">
+<button class="p-1 rounded-full text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors flex items-center justify-center" id="simBackBtn" onclick="simGoPrev()">
+<span class="material-symbols-outlined text-xl">arrow_back</span>
+</button>
+<div class="text-center">
+<p class="text-[11px] font-mono tracking-widest uppercase text-secondary font-bold" id="simStepBreadcrumb">STAGE 1 OF 5</p>
+<h2 class="text-xs font-bold text-on-surface" id="simStepTitle">Web-to-App Goal Handoff</h2>
+</div>
+<button class="p-1 rounded-full text-on-surface-variant hover:bg-surface-container" onclick="resetFlow()" title="Reset to start">
+<span class="material-symbols-outlined text-lg">refresh</span>
+</button>
+</div>
+<!-- PHONE DYNAMIC STAGE CONTAINER -->
+<div class="p-5 overflow-y-auto max-h-[640px] custom-scrollbar bg-surface-container-lowest" id="simStageViewport">
+<!-- ============================== -->
+<!-- SIM STAGE 1: GOAL SELECTION    -->
+<!-- ============================== -->
+<div class="stage-view space-y-4" id="simStep1">
+<div>
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-secondary-container text-on-secondary-fixed text-xs font-bold">
+<span class="material-symbols-outlined text-xs">eco</span> Seed Your Financial Habit
+              </span>
+<h2 class="text-xl font-bold font-serif text-on-surface mt-2 tracking-tight">Pick your micro-investing cushion</h2>
+<p class="text-xs text-on-surface-variant mt-1 leading-relaxed">Start with pocket change. Watch disciplined compounding outgrow traditional idle savings.</p>
+</div>
+<!-- Goal Presets -->
+<div class="space-y-2.5 pt-1">
+<!-- Option A: Emergency Cushion (Default) -->
+<div class="goal-card cursor-pointer p-3.5 rounded-2xl border-2 border-secondary bg-surface-container-low transition-all" id="goalCard-emergency" onclick="selectGoal('emergency', 100)">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-xl bg-secondary-container text-on-secondary-container flex items-center justify-center">
+<span class="material-symbols-outlined">shield</span>
+</div>
+<div>
+<h4 class="text-sm font-bold text-on-surface">Emergency Cushion</h4>
+<p class="text-xs text-on-surface-variant">Liquid, zero-lockin reserve</p>
+</div>
+</div>
+<div class="text-right">
+<div class="text-sm font-mono font-bold text-on-surface">₹100<span class="text-xs font-normal text-on-surface-variant">/wk</span></div>
+<span class="text-[10px] font-mono text-secondary font-bold">Recommended</span>
+</div>
+</div>
+</div>
+<!-- Option B: Next Milestone -->
+<div class="goal-card cursor-pointer p-3.5 rounded-2xl border border-surface-container-high bg-surface-container-lowest hover:bg-surface-container-low transition-all" id="goalCard-milestone" onclick="selectGoal('milestone', 250)">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-xl bg-surface-container text-on-surface-variant flex items-center justify-center">
+<span class="material-symbols-outlined">flag</span>
+</div>
+<div>
+<h4 class="text-sm font-bold text-on-surface">Next Milestone</h4>
+<p class="text-xs text-on-surface-variant">Gadget, trip, or rainy day</p>
+</div>
+</div>
+<div class="text-right">
+<div class="text-sm font-mono font-bold text-on-surface">₹250<span class="text-xs font-normal text-on-surface-variant">/wk</span></div>
+<span class="text-[10px] font-mono text-on-surface-variant">Balanced</span>
+</div>
+</div>
+</div>
+<!-- Option C: Long-Term Wealth -->
+<div class="goal-card cursor-pointer p-3.5 rounded-2xl border border-surface-container-high bg-surface-container-lowest hover:bg-surface-container-low transition-all" id="goalCard-wealth" onclick="selectGoal('wealth', 500)">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-xl bg-surface-container text-on-surface-variant flex items-center justify-center">
+<span class="material-symbols-outlined">trending_up</span>
+</div>
+<div>
+<h4 class="text-sm font-bold text-on-surface">Long-Term Wealth</h4>
+<p class="text-xs text-on-surface-variant">Equity index compounding</p>
+</div>
+</div>
+<div class="text-right">
+<div class="text-sm font-mono font-bold text-on-surface">₹500<span class="text-xs font-normal text-on-surface-variant">/wk</span></div>
+<span class="text-[10px] font-mono text-on-surface-variant">High Alpha</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Dynamic Weekly Slider -->
+<div class="bg-surface-container rounded-2xl p-4 border border-outline-variant/40 space-y-3">
+<div class="flex items-center justify-between">
+<span class="text-xs font-bold text-on-surface uppercase tracking-wider">Custom Weekly SIP</span>
+<span class="text-base font-mono font-extrabold text-secondary" id="sliderValueBadge">₹100 / week</span>
+</div>
+<input class="w-full accent-[#006c49] cursor-pointer" id="weeklySlider" max="1000" min="100" oninput="updateSliderCalc(this.value)" step="50" type="range" value="100">
+<div class="flex justify-between text-[11px] font-mono text-on-surface-variant">
+<span>₹100</span>
+<span>₹500</span>
+<span>₹1,000</span>
+</div>
+</div>
+<!-- Compounding Calculator Projection Card -->
+<div class="bg-primary-container text-surface-container-lowest rounded-2xl p-4 space-y-3 shadow-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5 text-secondary-fixed text-xs font-mono font-bold">
+<span class="material-symbols-outlined text-sm">auto_graph</span> 5-Yr Growth Projection
+                </div>
+<span class="text-[10px] font-mono bg-surface-tint/40 px-2 py-0.5 rounded text-surface-variant">@ 11% p.a. CAGR</span>
+</div>
+<div class="grid grid-cols-2 gap-2 pt-1 border-t border-surface-variant/20">
+<div>
+<p class="text-[11px] text-surface-variant">Your Contribution</p>
+<p class="text-sm font-mono font-bold text-surface-container-lowest mt-0.5" id="simContribDisplay">₹26,000</p>
+</div>
+<div>
+<p class="text-[11px] text-secondary-fixed">Estimated Corpus</p>
+<p class="text-lg font-mono font-extrabold text-secondary-fixed mt-0.5" id="simCorpusDisplay">₹34,450</p>
+</div>
+</div>
+<div class="w-full bg-surface-container-highest/20 rounded-full h-2 overflow-hidden flex">
+<div class="bg-secondary-fixed h-full" style="width: 75%;"></div>
+<div class="bg-tertiary-fixed h-full" style="width: 25%;"></div>
+</div>
+<p class="text-[10px] text-surface-variant/80 italic leading-tight">*Hypothetical illustrative return based on SEBI historic median index benchmarks.</p>
+</div>
+<!-- CTA -->
+<div class="pt-2">
+<button class="w-full h-13 py-3.5 px-4 bg-primary-container hover:bg-black text-secondary-fixed font-bold text-sm rounded-xl flex items-center justify-center gap-2 shadow-lg transition-transform active:scale-[0.99]" onclick="navigateToStep(2)">
+<span>Proceed to 60-Sec KYC Check</span>
+<span class="material-symbols-outlined text-base">arrow_forward</span>
+</button>
+<p class="text-center text-[11px] text-on-surface-variant mt-2 font-medium">⚡ 100% paperless • No physical paperwork needed</p>
+</div>
+</div>
+<!-- ======================================= -->
+<!-- SIM STAGE 2: READINESS CHECKLIST        -->
+<!-- ======================================= -->
+<div class="stage-view hidden space-y-4" id="simStep2">
+<div>
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-secondary-container text-on-secondary-fixed text-xs font-bold">
+<span class="material-symbols-outlined text-xs">fact_check</span> Zero Surprises
+              </span>
+<h2 class="text-xl font-bold font-serif text-on-surface mt-2 tracking-tight">Have these 2 things handy</h2>
+<p class="text-xs text-on-surface-variant mt-1 leading-relaxed">SEBI regulations mandate an identity confirmation before your first folio can be legally allotted.</p>
+</div>
+<!-- Readiness Checklist Items -->
+<div class="space-y-3 pt-1">
+<!-- Item 1: PAN -->
+<div class="cursor-pointer p-4 rounded-2xl border-2 border-secondary bg-surface-container-low transition-all" id="chkCard-pan" onclick="toggleChecklist('pan')">
+<div class="flex items-start gap-3.5">
+<div class="size-6 rounded-lg bg-secondary text-on-secondary flex items-center justify-center mt-0.5 shrink-0 transition-all" id="chkBox-pan">
+<span class="material-symbols-outlined text-base">check</span>
+</div>
+<div class="flex-1">
+<div class="flex items-center justify-between">
+<h4 class="text-sm font-bold text-on-surface">10-Character PAN Card</h4>
+<span class="text-[10px] font-mono px-2 py-0.5 rounded bg-surface-container font-semibold text-secondary">Ready</span>
+</div>
+<p class="text-xs text-on-surface-variant mt-1">Permanent Account Number issued by Income Tax Dept for instant tax-exempt folio tagging.</p>
+</div>
+</div>
+</div>
+<!-- Item 2: Aadhaar OTP -->
+<div class="cursor-pointer p-4 rounded-2xl border-2 border-secondary bg-surface-container-low transition-all" id="chkCard-aadhaar" onclick="toggleChecklist('aadhaar')">
+<div class="flex items-start gap-3.5">
+<div class="size-6 rounded-lg bg-secondary text-on-secondary flex items-center justify-center mt-0.5 shrink-0 transition-all" id="chkBox-aadhaar">
+<span class="material-symbols-outlined text-base">check</span>
+</div>
+<div class="flex-1">
+<div class="flex items-center justify-between">
+<h4 class="text-sm font-bold text-on-surface">Aadhaar-Linked Mobile</h4>
+<span class="text-[10px] font-mono px-2 py-0.5 rounded bg-surface-container font-semibold text-secondary">Ready</span>
+</div>
+<p class="text-xs text-on-surface-variant mt-1">To receive the 6-digit DigiLocker e-Sign OTP instantly without courier/wet signatures.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Edge Case Reminder Trigger -->
+<div class="bg-surface-container-lowest rounded-2xl border border-outline-variant/60 p-3.5 flex items-center justify-between gap-3">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-on-tertiary-container text-xl">schedule</span>
+<div>
+<p class="text-xs font-bold text-on-surface">Don't have PAN right now?</p>
+<p class="text-[11px] text-on-surface-variant">We'll save your ₹100 weekly goal lock.</p>
+</div>
+</div>
+<button class="px-3 py-1.5 rounded-lg bg-surface-container hover:bg-surface-container-high border border-outline-variant text-xs font-bold text-on-surface whitespace-nowrap" onclick="scheduleReminderToast()">
+                Remind at 8 PM
+              </button>
+</div>
+<!-- Validation Status Pill -->
+<div class="p-2.5 rounded-xl bg-secondary-container/40 border border-secondary text-xs text-on-secondary-fixed flex items-center gap-2" id="chkStatusBanner">
+<span class="material-symbols-outlined text-sm text-secondary">check_circle</span>
+<span class="font-medium">All items confirmed! Ready for 10-second KYC.</span>
+</div>
+<!-- Action CTA -->
+<div class="pt-2">
+<button class="w-full h-13 py-3.5 px-4 bg-primary-container text-secondary-fixed font-bold text-sm rounded-xl flex items-center justify-center gap-2 shadow-lg transition-transform active:scale-[0.99]" id="chkContinueBtn" onclick="navigateToStep(3)">
+<span>I Have Both Ready — Continue</span>
+<span class="material-symbols-outlined text-base">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- ======================================= -->
+<!-- SIM STAGE 3: REGULATED KYC INPUT        -->
+<!-- ======================================= -->
+<div class="stage-view hidden space-y-4" id="simStep3">
+<div>
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-secondary-container text-on-secondary-fixed text-xs font-bold">
+<span class="material-symbols-outlined text-xs">verified</span> SEBI &amp; KRA Compliance
+              </span>
+<h2 class="text-xl font-bold font-serif text-on-surface mt-2 tracking-tight">Enter your official details</h2>
+<p class="text-xs text-on-surface-variant mt-1 leading-relaxed">Direct DigiLocker integration. Your data is 256-bit encrypted and never sold.</p>
+</div>
+<!-- KYC Form -->
+<div class="space-y-4 pt-1">
+<!-- PAN Field -->
+<div>
+<div class="flex items-center justify-between mb-1.5">
+<label class="text-xs font-bold text-on-surface">Permanent Account Number (PAN)</label>
+<span class="hidden text-[10px] font-mono px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-fixed font-bold flex items-center gap-1" id="panBadge">
+<span class="material-symbols-outlined text-xs">verified</span> Valid Individual PAN
+                  </span>
+</div>
+<div class="relative">
+<input class="w-full h-12 rounded-xl border border-outline-variant bg-surface-container-lowest px-4 font-mono font-bold tracking-wider text-sm uppercase focus:border-secondary focus:ring-1 focus:ring-secondary" id="panInput" maxlength="10" oninput="handlePanInput(this)" placeholder="e.g. ABCDE1234F" type="text" value="ABCDE1234F">
+<button class="absolute right-3 top-3 text-[11px] font-mono text-secondary hover:underline font-bold" onclick="presetSamplePan()" type="button">Use Sample</button>
+</div>
+<p class="text-[11px] text-on-surface-variant mt-1">Formats automatically (5 letters, 4 digits, 1 letter)</p>
+</div>
+<!-- Aadhaar Last 4 Digits -->
+<div>
+<label class="text-xs font-bold text-on-surface block mb-1.5">Aadhaar Card Last 4 Digits</label>
+<div class="flex items-center gap-2">
+<div class="flex items-center justify-center h-12 w-28 bg-surface-container rounded-xl font-mono text-base tracking-widest text-on-surface-variant select-none border border-outline-variant/40">
+                    •••• ••••
+                  </div>
+<input class="flex-1 h-12 rounded-xl border border-outline-variant bg-surface-container-lowest px-4 font-mono font-bold text-center tracking-widest text-base focus:border-secondary focus:ring-1 focus:ring-secondary" id="aadhaarLast4" maxlength="4" oninput="handleAadhaarInput(this)" placeholder="9842" type="text" value="9842">
+</div>
+<p class="text-[11px] text-on-surface-variant mt-1">Used to query official DigiLocker repository for instant KYC</p>
+</div>
+<!-- Trust / Security Callout -->
+<div class="p-3 bg-surface-container rounded-xl border border-outline-variant/50 space-y-1.5">
+<div class="flex items-center gap-2 text-xs font-bold text-on-surface">
+<span class="material-symbols-outlined text-secondary text-base">lock</span>
+                  Direct SEBI KRA &amp; DigiLocker Gateway
+                </div>
+<p class="text-[11px] text-on-surface-variant leading-relaxed">Koru interacts with government-authorized KYC Registration Agencies (CAMS/KFintech) via 256-bit bank-grade SSL.</p>
+</div>
+</div>
+<!-- Submit CTA -->
+<div class="pt-2">
+<button class="w-full h-13 py-3.5 px-4 bg-primary-container hover:bg-black text-secondary-fixed font-bold text-sm rounded-xl flex items-center justify-center gap-2 shadow-lg transition-transform active:scale-[0.99]" id="btnSubmitKyc" onclick="startVerificationTelemetry()">
+<span>Verify Instantly via DigiLocker</span>
+<span class="material-symbols-outlined text-base">bolt</span>
+</button>
+<p class="text-center text-[11px] text-on-surface-variant mt-2">Zero wait time • Direct automated pipeline</p>
+</div>
+</div>
+<!-- ======================================= -->
+<!-- SIM STAGE 4: ANTI-FREEZE LIVE TRACKER   -->
+<!-- ======================================= -->
+<div class="stage-view hidden space-y-4" id="simStep4">
+<div class="flex items-center justify-between">
+<div>
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-secondary-container text-on-secondary-fixed text-xs font-bold">
+<span class="material-symbols-outlined text-xs">speed</span> Anti-Freeze Engine
+                </span>
+<h2 class="text-xl font-bold font-serif text-on-surface mt-2 tracking-tight">Live KYC Verification</h2>
+</div>
+<div class="text-right">
+<div class="text-xs font-mono font-bold text-secondary px-2.5 py-1 rounded-full bg-surface-container border border-secondary/30 inline-block" id="telemetryTimer">Elapsed: 0.0s / ~10s</div>
+</div>
+</div>
+<!-- Micro Telemetry Progress Cards -->
+<div class="space-y-3 pt-1">
+<!-- Sub-step 1: NSDL Registry -->
+<div class="p-3.5 rounded-2xl border bg-surface-container transition-all" id="teleStep1">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded-full bg-surface-container-highest text-on-surface-variant flex items-center justify-center text-xs" id="teleIcon1">
+<span class="material-symbols-outlined text-sm animate-spin">sync</span>
+</div>
+<div>
+<h4 class="text-xs font-bold text-on-surface">Validating PAN with NSDL</h4>
+<p class="text-[11px] text-on-surface-variant" id="teleDetail1">Authenticating tax validity &amp; name match...</p>
+</div>
+</div>
+<span class="text-[10px] font-mono px-2 py-0.5 rounded bg-surface-container-highest text-on-surface-variant font-bold" id="teleStatus1">Checking</span>
+</div>
+</div>
+<!-- Sub-step 2: DigiLocker Profile -->
+<div class="p-3.5 rounded-2xl border bg-surface-container-lowest border-outline-variant/50 transition-all opacity-50" id="teleStep2">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded-full bg-surface-container text-on-surface-variant flex items-center justify-center text-xs" id="teleIcon2">
+<span class="material-symbols-outlined text-sm">hourglass_top</span>
+</div>
+<div>
+<h4 class="text-xs font-bold text-on-surface">Fetching Verified Aadhaar XML</h4>
+<p class="text-[11px] text-on-surface-variant" id="teleDetail2">Waiting for registry clearance...</p>
+</div>
+</div>
+<span class="text-[10px] font-mono px-2 py-0.5 rounded bg-surface-container text-on-surface-variant font-bold" id="teleStatus2">Queued</span>
+</div>
+</div>
+<!-- Sub-step 3: Folio Creation -->
+<div class="p-3.5 rounded-2xl border bg-surface-container-lowest border-outline-variant/50 transition-all opacity-50" id="teleStep3">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded-full bg-surface-container text-on-surface-variant flex items-center justify-center text-xs" id="teleIcon3">
+<span class="material-symbols-outlined text-sm">inventory_2</span>
+</div>
+<div>
+<h4 class="text-xs font-bold text-on-surface">Activating Zero-Commission Folio</h4>
+<p class="text-[11px] text-on-surface-variant" id="teleDetail3">SEBI compliant MF investment account...</p>
+</div>
+</div>
+<span class="text-[10px] font-mono px-2 py-0.5 rounded bg-surface-container text-on-surface-variant font-bold" id="teleStatus3">Queued</span>
+</div>
+</div>
+</div>
+<!-- Slow Network Fallback Simulation Switch -->
+<div class="pt-2">
+<div class="bg-surface-container rounded-xl p-3 border border-outline-variant/60 flex items-center justify-between">
+<div>
+<p class="text-xs font-bold text-on-surface">Simulate Slow Network</p>
+<p class="text-[11px] text-on-surface-variant">Triggers WhatsApp fallback banner</p>
+</div>
+<button class="px-2.5 py-1 rounded bg-surface-container-high border border-outline-variant text-xs font-mono font-bold text-on-surface" id="slowNetworkToggleBtn" onclick="toggleSlowNetworkTest()" type="button">
+                  Toggle Test
+                </button>
+</div>
+<!-- Slow Network Notification Card (Default Hidden) -->
+<div class="hidden mt-3 p-3.5 rounded-2xl bg-tertiary-container/10 border border-tertiary-container/30 space-y-2" id="slowNetworkBanner">
+<div class="flex items-center gap-2 text-on-tertiary-container text-xs font-bold">
+<span class="material-symbols-outlined text-sm">wifi_channel</span> Network Congestion (&gt;12s)
+                </div>
+<p class="text-[11px] text-on-surface-variant leading-relaxed">UIDAI DigiLocker nodes are taking longer than normal. Don't worry! We will message you via WhatsApp the second your folio finishes.</p>
+<button class="w-full py-2 bg-secondary text-on-secondary rounded-lg text-xs font-bold flex items-center justify-center gap-1.5" onclick="showToast('WhatsApp Notification Set', 'We will alert you at +91 98••••4810 as soon as KRA completes.')">
+<span class="material-symbols-outlined text-sm">chat</span> Notify me on WhatsApp
+                </button>
+</div>
+</div>
+<!-- Auto-unlocked CTA button -->
+<div class="pt-2">
+<button class="w-full h-13 py-3.5 px-4 bg-outline-variant text-on-surface-variant font-bold text-sm rounded-xl flex items-center justify-center gap-2 cursor-not-allowed transition-all" disabled="" id="teleAdvanceBtn" onclick="navigateToStep(5)">
+<span>Proceed to Instant ₹100 UPI Investment</span>
+<span class="material-symbols-outlined text-base">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- ======================================= -->
+<!-- SIM STAGE 5: ₹100 UPI BLOOM CELEBRATION -->
+<!-- ======================================= -->
+<div class="stage-view hidden space-y-4" id="simStep5">
+<!-- Shimmering Banner -->
+<div class="relative overflow-hidden rounded-2xl bg-gradient-to-r from-[#0a2118] via-[#006c49] to-[#0a2118] p-4 text-surface-container-lowest text-center shadow-lg border border-secondary-fixed/30">
+<div class="absolute -right-6 -top-6 w-24 h-24 rounded-full bg-secondary-fixed/20 blur-xl"></div>
+<span class="inline-block px-3 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed text-[11px] font-mono font-bold uppercase tracking-wider mb-1">KYC Folio #SP-884920 Active</span>
+<h2 class="text-xl font-bold font-serif">Your First ₹100 Bloom</h2>
+<p class="text-xs text-surface-variant/90 mt-0.5">Plant the seed. Complete your first micro-contribution now.</p>
+</div>
+<!-- Koru Mascot Plant Bloom Display -->
+<div class="flex flex-col items-center justify-center py-2 relative">
+<div class="relative flex items-center justify-center">
+<!-- Glowing Aura -->
+<div class="absolute size-32 rounded-full bg-secondary-container/40 bloom-pulse"></div>
+<!-- Plant Container -->
+<div class="relative z-10 size-24 rounded-full bg-surface-container-low border-2 border-secondary flex items-center justify-center shadow-inner" id="plantMascotContainer">
+<div class="text-center">
+<span class="material-symbols-outlined text-5xl text-secondary select-none transition-transform duration-700 hover:scale-110" id="plantIcon">psychiatry</span>
+</div>
+</div>
+</div>
+<div class="mt-2 text-center">
+<span class="text-xs font-mono font-bold text-secondary uppercase tracking-widest" id="plantStateLabel">Stage 5 Bloom Achieved</span>
+<p class="text-[11px] text-on-surface-variant">Emergency Cushion: ₹100/wk locked</p>
+</div>
+</div>
+<!-- Interactive UPI App Selector -->
+<div class="space-y-2">
+<label class="text-xs font-bold text-on-surface block">Choose Your Instant UPI Provider</label>
+<div class="grid grid-cols-4 gap-2">
+<button class="upi-option p-2.5 rounded-xl border-2 border-secondary bg-surface-container-low flex flex-col items-center justify-center gap-1 transition-all" id="upi-gpay" onclick="selectUpiApp('gpay')" type="button">
+<span class="font-bold text-xs font-mono text-primary">GPay</span>
+<span class="text-[9px] font-medium text-secondary">Ready</span>
+</button>
+<button class="upi-option p-2.5 rounded-xl border border-surface-container-high bg-surface-container-lowest flex flex-col items-center justify-center gap-1 transition-all" id="upi-phonepe" onclick="selectUpiApp('phonepe')" type="button">
+<span class="font-bold text-xs font-mono text-primary">PhonePe</span>
+<span class="text-[9px] text-on-surface-variant">Tap</span>
+</button>
+<button class="upi-option p-2.5 rounded-xl border border-surface-container-high bg-surface-container-lowest flex flex-col items-center justify-center gap-1 transition-all" id="upi-paytm" onclick="selectUpiApp('paytm')" type="button">
+<span class="font-bold text-xs font-mono text-primary">Paytm</span>
+<span class="text-[9px] text-on-surface-variant">Tap</span>
+</button>
+<button class="upi-option p-2.5 rounded-xl border border-surface-container-high bg-surface-container-lowest flex flex-col items-center justify-center gap-1 transition-all" id="upi-bhim" onclick="selectUpiApp('bhim')" type="button">
+<span class="font-bold text-xs font-mono text-primary">BHIM</span>
+<span class="text-[9px] text-on-surface-variant">Tap</span>
+</button>
+</div>
+</div>
+<!-- Primary Payment CTA -->
+<div class="pt-1">
+<button class="w-full h-14 py-3.5 px-4 bg-primary-container hover:bg-black text-secondary-fixed font-bold text-sm rounded-xl flex items-center justify-center gap-2 shadow-xl transition-all transform active:scale-[0.98]" id="btnPayUpi" onclick="triggerUpiPaymentSuccess()">
+<span class="material-symbols-outlined text-lg text-secondary-fixed">bolt</span>
+<span id="btnPayText">Pay ₹100 via UPI &amp; Bloom Your Koru</span>
+</button>
+</div>
+<!-- Referral Seed Card (Revealed after payment) -->
+<div class="hidden p-4 rounded-2xl bg-surface-container border border-secondary/40 space-y-2.5" id="referralCard">
+<div class="flex items-start gap-2.5">
+<span class="material-symbols-outlined text-secondary text-2xl mt-0.5">card_giftcard</span>
+<div>
+<h4 class="text-xs font-bold text-on-surface">Gift a ₹50 starter seed to a friend</h4>
+<p class="text-[11px] text-on-surface-variant">When they invest their first ₹100, you both get ₹50 added directly into your liquid reserve.</p>
+</div>
+</div>
+<div class="flex items-center gap-2 pt-1">
+<div class="flex-1 bg-surface-container-lowest px-3 py-2 rounded-lg font-mono text-xs text-on-surface truncate border border-outline-variant/40">
+                  koru.in/join/BLOOM100
+                </div>
+<button class="px-3.5 py-2 bg-secondary text-on-secondary rounded-lg text-xs font-bold hover:bg-secondary/90 transition-colors flex items-center gap-1 shrink-0" onclick="copyReferralLink()">
+<span class="material-symbols-outlined text-sm">content_copy</span> Copy
+                </button>
+</div>
+</div>
+<!-- Restart / Replay Flow CTA -->
+<div class="text-center pt-2">
+<button class="text-xs font-bold text-on-surface-variant hover:text-secondary inline-flex items-center gap-1" onclick="resetFlow()">
+<span class="material-symbols-outlined text-sm">replay</span> Restart entire onboarding simulation
+              </button>
+</div>
+</div>
+</div>
+<!-- Sticky In-App Regulatory Footer inside device viewport -->
+<div class="p-2.5 bg-surface-container border-t border-surface-container-high text-center select-none" id="risk-disclaimer">
+<p class="text-[10px] text-on-surface-variant font-legal-disclaimer leading-tight">
+            Mutual fund investments are subject to market risks. Read all scheme related documents carefully before investing. ARN-289410.
+          </p>
+</div>
+</div>
+<!-- Under-device Quick Control Bar -->
+<div class="mt-4 flex flex-wrap items-center justify-center gap-3 text-xs text-on-surface-variant">
+<span class="flex items-center gap-1 font-mono font-medium">
+<span class="size-2 rounded-full bg-secondary animate-pulse"></span> Dynamic State Engine Active
+        </span>
+<span class="text-outline-variant">•</span>
+<button class="underline hover:text-on-surface font-semibold" onclick="switchView('storyboard')">Inspect all 5 screens in Storyboard View →</button>
+</div>
+</section>
+<!-- ========================================== -->
+<!-- VIEW MODE 2: 5-STAGE STORYBOARD GRID       -->
+<!-- ========================================== -->
+<section class="hidden" id="storyboardContainer">
+<div class="mb-6 flex flex-col sm:flex-row sm:items-end justify-between gap-3">
+<div>
+<span class="text-xs font-mono font-bold text-secondary uppercase tracking-widest">Concurrent Architecture</span>
+<h2 class="text-2xl font-bold font-serif text-on-surface">5-Stage Web-to-Folio Journey Storyboard</h2>
+<p class="text-xs text-on-surface-variant">Examine all screen states side-by-side with interactive components mirrored live.</p>
+</div>
+<button class="self-start sm:self-auto px-4 py-2 bg-primary-container text-secondary-fixed text-xs font-bold rounded-xl flex items-center gap-2 shadow-sm" onclick="switchView('sim')">
+<span class="material-symbols-outlined text-sm">smartphone</span> Back to Focused Simulator
+        </button>
+</div>
+<!-- 5 Column Responsive Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
+<!-- CARD 1: GOAL HANDOFF -->
+<div class="bg-surface-container-lowest rounded-3xl border border-surface-container-highest p-4 shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between pb-3 border-b border-surface-container">
+<span class="font-mono text-xs font-bold text-secondary">STAGE 01</span>
+<span class="text-[10px] px-2 py-0.5 rounded bg-surface-container text-on-surface-variant font-bold">Web Handoff</span>
+</div>
+<h3 class="text-sm font-bold font-serif mt-3">Goal Handoff &amp; Corpus</h3>
+<p class="text-[11px] text-on-surface-variant mt-1">Preset cushion selection + live 11% 5-year CAGR projection model.</p>
+<div class="mt-4 p-3 bg-surface-container rounded-xl border border-outline-variant/40 space-y-2">
+<div class="text-xs font-bold">Emergency Cushion</div>
+<div class="text-base font-mono font-extrabold text-secondary">₹100<span class="text-xs font-normal">/wk</span></div>
+<div class="text-[11px] font-mono text-on-surface-variant">5-Yr: ₹34,450 corpus</div>
+</div>
+</div>
+<button class="mt-4 w-full py-2 rounded-lg bg-surface-container hover:bg-surface-container-high text-xs font-bold text-on-surface flex items-center justify-center gap-1" onclick="jumpToSimStage(1)">
+<span>Test Stage 1</span>
+<span class="material-symbols-outlined text-xs">arrow_forward</span>
+</button>
+</div>
+<!-- CARD 2: READINESS CHECKLIST -->
+<div class="bg-surface-container-lowest rounded-3xl border border-surface-container-highest p-4 shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between pb-3 border-b border-surface-container">
+<span class="font-mono text-xs font-bold text-secondary">STAGE 02</span>
+<span class="text-[10px] px-2 py-0.5 rounded bg-surface-container text-on-surface-variant font-bold">Zero Surprise</span>
+</div>
+<h3 class="text-sm font-bold font-serif mt-3">Prerequisite Checklist</h3>
+<p class="text-[11px] text-on-surface-variant mt-1">Pre-flight check for PAN card and Aadhaar OTP phone to prevent drop-offs.</p>
+<div class="mt-4 space-y-2">
+<div class="p-2 rounded-lg bg-surface-container flex items-center gap-2 text-xs">
+<span class="material-symbols-outlined text-secondary text-sm">check_circle</span>
+<span>PAN 10-char ready</span>
+</div>
+<div class="p-2 rounded-lg bg-surface-container flex items-center gap-2 text-xs">
+<span class="material-symbols-outlined text-secondary text-sm">check_circle</span>
+<span>Aadhaar OTP mobile ready</span>
+</div>
+</div>
+</div>
+<button class="mt-4 w-full py-2 rounded-lg bg-surface-container hover:bg-surface-container-high text-xs font-bold text-on-surface flex items-center justify-center gap-1" onclick="jumpToSimStage(2)">
+<span>Test Stage 2</span>
+<span class="material-symbols-outlined text-xs">arrow_forward</span>
+</button>
+</div>
+<!-- CARD 3: REGULATED KYC -->
+<div class="bg-surface-container-lowest rounded-3xl border border-surface-container-highest p-4 shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between pb-3 border-b border-surface-container">
+<span class="font-mono text-xs font-bold text-secondary">STAGE 03</span>
+<span class="text-[10px] px-2 py-0.5 rounded bg-secondary-container text-on-secondary-fixed font-bold">DigiLocker</span>
+</div>
+<h3 class="text-sm font-bold font-serif mt-3">Regulated KYC Input</h3>
+<p class="text-[11px] text-on-surface-variant mt-1">Auto-formatting uppercase PAN validator + Aadhaar last 4 numeric masking.</p>
+<div class="mt-4 p-3 bg-surface-container rounded-xl font-mono text-xs space-y-1">
+<div class="text-on-surface-variant text-[10px]">VERIFIED IDENTIFIER</div>
+<div class="font-bold text-primary">ABCDE1234F</div>
+<div class="text-[10px] text-secondary font-bold">✓ SEBI KRA Match Ready</div>
+</div>
+</div>
+<button class="mt-4 w-full py-2 rounded-lg bg-surface-container hover:bg-surface-container-high text-xs font-bold text-on-surface flex items-center justify-center gap-1" onclick="jumpToSimStage(3)">
+<span>Test Stage 3</span>
+<span class="material-symbols-outlined text-xs">arrow_forward</span>
+</button>
+</div>
+<!-- CARD 4: ANTI-FREEZE LIVE TRACKER -->
+<div class="bg-surface-container-lowest rounded-3xl border border-surface-container-highest p-4 shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between pb-3 border-b border-surface-container">
+<span class="font-mono text-xs font-bold text-secondary">STAGE 04</span>
+<span class="text-[10px] px-2 py-0.5 rounded bg-surface-container text-on-surface-variant font-bold">Anti-Freeze</span>
+</div>
+<h3 class="text-sm font-bold font-serif mt-3">Live Telemetry Tracker</h3>
+<p class="text-[11px] text-on-surface-variant mt-1">Real-time timer &amp; 3-step NSDL/DigiLocker/Folio progression + network fallback.</p>
+<div class="mt-4 p-3 bg-surface-container rounded-xl space-y-1.5 text-xs">
+<div class="flex items-center justify-between">
+<span class="text-[10px] font-mono">Elapsed: ~3.4s</span>
+<span class="size-2 rounded-full bg-secondary animate-ping"></span>
+</div>
+<div class="text-[11px] font-bold text-secondary">Folio #SP-884920 Created</div>
+</div>
+</div>
+<button class="mt-4 w-full py-2 rounded-lg bg-surface-container hover:bg-surface-container-high text-xs font-bold text-on-surface flex items-center justify-center gap-1" onclick="jumpToSimStage(4)">
+<span>Test Stage 4</span>
+<span class="material-symbols-outlined text-xs">arrow_forward</span>
+</button>
+</div>
+<!-- CARD 5: ₹100 UPI BLOOM -->
+<div class="bg-surface-container-lowest rounded-3xl border border-surface-container-highest p-4 shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between pb-3 border-b border-surface-container">
+<span class="font-mono text-xs font-bold text-secondary">STAGE 05</span>
+<span class="text-[10px] px-2 py-0.5 rounded bg-secondary-fixed text-on-secondary-fixed font-bold">Bloom</span>
+</div>
+<h3 class="text-sm font-bold font-serif mt-3">₹100 UPI Investment</h3>
+<p class="text-[11px] text-on-surface-variant mt-1">UPI intent triggers celebration confetti, plant blooming mascot &amp; referral link.</p>
+<div class="mt-4 p-3 bg-primary-container text-surface-container-lowest rounded-xl text-center space-y-1">
+<span class="material-symbols-outlined text-secondary-fixed text-2xl">eco</span>
+<div class="text-xs font-bold text-secondary-fixed">Koru in Full Bloom</div>
+<div class="text-[10px] text-surface-variant">First ₹100 Seed Active</div>
+</div>
+</div>
+<button class="mt-4 w-full py-2 rounded-lg bg-surface-container hover:bg-surface-container-high text-xs font-bold text-on-surface flex items-center justify-center gap-1" onclick="jumpToSimStage(5)">
+<span>Test Stage 5</span>
+<span class="material-symbols-outlined text-xs">arrow_forward</span>
+</button>
+</div>
+</div>
+</section>
+</main>
+<!-- CONFETTI CANVAS OVERLAY FOR STAGE 5 BLOOM CELEBRATION -->
+<canvas class="pointer-events-none fixed inset-0 z-50 w-full h-full hidden" id="confettiCanvas"></canvas>
+<!-- JAVASCRIPT LOGIC & MICRO-INTERACTIONS -->
+<script>
+    // State Management
+    let currentStep = 1;
+    let selectedGoalType = 'emergency';
+    let weeklyAmount = 100;
+    let checklistState = { pan: true, aadhaar: true };
+    let telemetryTimerInterval = null;
+    let telemetrySeconds = 0.0;
+    let slowNetworkActive = false;
+    let selectedUpi = 'gpay';
+
+    // Clock updater
+    function updateClock() {
+      const now = new Date();
+      const hours = String(now.getHours()).padStart(2, '0');
+      const minutes = String(now.getMinutes()).padStart(2, '0');
+      const clockEl = document.getElementById('phoneClock');
+      if (clockEl) clockEl.innerText = `${hours}:${minutes}`;
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+
+    // View switcher (Simulator vs Storyboard)
+    function switchView(view) {
+      const simCont = document.getElementById('simulatorContainer');
+      const boardCont = document.getElementById('storyboardContainer');
+      const btnSim = document.getElementById('btnViewSimulator');
+      const btnBoard = document.getElementById('btnViewStoryboard');
+      const mobileSim = document.getElementById('mobileViewSimBtn');
+      const mobileBoard = document.getElementById('mobileViewBoardBtn');
+
+      if (view === 'sim') {
+        simCont.classList.remove('hidden');
+        boardCont.classList.add('hidden');
+        btnSim.className = "flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-primary-container text-surface-container-lowest shadow-sm";
+        btnBoard.className = "flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-bold transition-all text-on-surface-variant hover:text-on-surface";
+        mobileSim.className = "px-2.5 py-1 text-xs font-semibold rounded bg-surface-container-lowest text-primary shadow-sm";
+        mobileBoard.className = "px-2.5 py-1 text-xs font-semibold rounded text-on-surface-variant";
+      } else {
+        simCont.classList.add('hidden');
+        boardCont.classList.remove('hidden');
+        btnBoard.className = "flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-primary-container text-surface-container-lowest shadow-sm";
+        btnSim.className = "flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-bold transition-all text-on-surface-variant hover:text-on-surface";
+        mobileBoard.className = "px-2.5 py-1 text-xs font-semibold rounded bg-surface-container-lowest text-primary shadow-sm";
+        mobileSim.className = "px-2.5 py-1 text-xs font-semibold rounded text-on-surface-variant";
+      }
+    }
+
+    function jumpToSimStage(stageNumber) {
+      switchView('sim');
+      navigateToStep(stageNumber);
+    }
+
+    // Step Navigation
+    function navigateToStep(stepNumber) {
+      currentStep = stepNumber;
+      
+      // Update Step Header text
+      const titles = [
+        "",
+        "Web-to-App Goal Handoff",
+        "Readiness Checklist",
+        "Regulated KYC Input",
+        "Live Telemetry Tracker",
+        "₹100 UPI Bloom"
+      ];
+      document.getElementById('simStepBreadcrumb').innerText = `STAGE ${stepNumber} OF 5`;
+      document.getElementById('simStepTitle').innerText = titles[stepNumber];
+
+      // Hide all stages, show current
+      for (let i = 1; i <= 5; i++) {
+        const stageEl = document.getElementById(`simStep${i}`);
+        if (stageEl) {
+          if (i === stepNumber) {
+            stageEl.classList.remove('hidden');
+          } else {
+            stageEl.classList.add('hidden');
+          }
+        }
+
+        // Stepper Navigation styling
+        const navPill = document.getElementById(`step-nav-${i}`);
+        if (navPill) {
+          if (i === stepNumber) {
+            navPill.className = "step-nav-pill flex items-center gap-2 px-3 py-1.5 rounded-lg font-bold border transition-all bg-primary-container text-surface-container-lowest border-primary-container shadow-sm shrink-0";
+            navPill.querySelector('span:first-child').className = "w-5 h-5 rounded-full bg-secondary-fixed text-on-secondary-fixed text-[11px] font-mono flex items-center justify-center font-bold";
+          } else if (i < stepNumber) {
+            navPill.className = "step-nav-pill flex items-center gap-2 px-3 py-1.5 rounded-lg font-medium border border-transparent text-secondary hover:bg-surface-container shrink-0";
+            navPill.querySelector('span:first-child').className = "w-5 h-5 rounded-full bg-secondary text-on-secondary text-[11px] font-mono flex items-center justify-center font-semibold";
+          } else {
+            navPill.className = "step-nav-pill flex items-center gap-2 px-3 py-1.5 rounded-lg font-medium border border-transparent text-on-surface-variant hover:bg-surface-container shrink-0";
+            navPill.querySelector('span:first-child').className = "w-5 h-5 rounded-full bg-surface-container-highest text-on-surface-variant text-[11px] font-mono flex items-center justify-center font-semibold";
+          }
+        }
+      }
+
+      // Back button visibility
+      const backBtn = document.getElementById('simBackBtn');
+      if (currentStep === 1) {
+        backBtn.classList.add('opacity-40', 'cursor-not-allowed');
+      } else {
+        backBtn.classList.remove('opacity-40', 'cursor-not-allowed');
+      }
+
+      // Step-specific trigger
+      if (stepNumber === 4) {
+        startVerificationTelemetry();
+      }
+    }
+
+    function simGoPrev() {
+      if (currentStep > 1) {
+        navigateToStep(currentStep - 1);
+      }
+    }
+
+    // STAGE 1: GOAL SELECTION & CALCULATOR
+    function selectGoal(type, amount) {
+      selectedGoalType = type;
+      weeklyAmount = amount;
+      
+      const cards = ['emergency', 'milestone', 'wealth'];
+      cards.forEach(c => {
+        const el = document.getElementById(`goalCard-${c}`);
+        if (c === type) {
+          el.className = "goal-card cursor-pointer p-3.5 rounded-2xl border-2 border-secondary bg-surface-container-low transition-all";
+        } else {
+          el.className = "goal-card cursor-pointer p-3.5 rounded-2xl border border-surface-container-high bg-surface-container-lowest hover:bg-surface-container-low transition-all";
+        }
+      });
+
+      document.getElementById('weeklySlider').value = amount;
+      updateSliderCalc(amount);
+    }
+
+    function updateSliderCalc(val) {
+      weeklyAmount = parseInt(val, 10);
+      document.getElementById('sliderValueBadge').innerText = `₹${weeklyAmount.toLocaleString('en-IN')} / week`;
+      
+      // Calculate 5-year metrics (52 weeks * 5 = 260 weeks)
+      const totalContributed = weeklyAmount * 260;
+      // Formula approximation for SIP at 11% CAGR over 5 years: ~1.325x multiplier
+      const projectedCorpus = Math.round(totalContributed * 1.325);
+
+      document.getElementById('simContribDisplay').innerText = `₹${totalContributed.toLocaleString('en-IN')}`;
+      document.getElementById('simCorpusDisplay').innerText = `₹${projectedCorpus.toLocaleString('en-IN')}`;
+    }
+
+    // STAGE 2: CHECKLIST
+    function toggleChecklist(item) {
+      checklistState[item] = !checklistState[item];
+      const card = document.getElementById(`chkCard-${item}`);
+      const box = document.getElementById(`chkBox-${item}`);
+
+      if (checklistState[item]) {
+        card.className = "cursor-pointer p-4 rounded-2xl border-2 border-secondary bg-surface-container-low transition-all";
+        box.className = "size-6 rounded-lg bg-secondary text-on-secondary flex items-center justify-center mt-0.5 shrink-0 transition-all";
+        box.innerHTML = '<span class="material-symbols-outlined text-base">check</span>';
+      } else {
+        card.className = "cursor-pointer p-4 rounded-2xl border border-surface-container-highest bg-surface-container-lowest transition-all";
+        box.className = "size-6 rounded-lg border-2 border-outline-variant bg-transparent flex items-center justify-center mt-0.5 shrink-0 transition-all";
+        box.innerHTML = '';
+      }
+
+      validateChecklist();
+    }
+
+    function validateChecklist() {
+      const continueBtn = document.getElementById('chkContinueBtn');
+      const banner = document.getElementById('chkStatusBanner');
+
+      if (checklistState.pan && checklistState.aadhaar) {
+        continueBtn.disabled = false;
+        continueBtn.className = "w-full h-13 py-3.5 px-4 bg-primary-container text-secondary-fixed font-bold text-sm rounded-xl flex items-center justify-center gap-2 shadow-lg transition-transform active:scale-[0.99]";
+        banner.className = "p-2.5 rounded-xl bg-secondary-container/40 border border-secondary text-xs text-on-secondary-fixed flex items-center gap-2";
+        banner.innerHTML = '<span class="material-symbols-outlined text-sm text-secondary">check_circle</span><span class="font-medium">All items confirmed! Ready for 10-second KYC.</span>';
+      } else {
+        continueBtn.disabled = true;
+        continueBtn.className = "w-full h-13 py-3.5 px-4 bg-outline-variant text-on-surface-variant font-bold text-sm rounded-xl flex items-center justify-center gap-2 cursor-not-allowed";
+        banner.className = "p-2.5 rounded-xl bg-tertiary-container/10 border border-tertiary-container/30 text-xs text-on-tertiary-container flex items-center gap-2";
+        banner.innerHTML = '<span class="material-symbols-outlined text-sm text-on-tertiary-container">info</span><span class="font-medium">Please confirm both documents are accessible to proceed.</span>';
+      }
+    }
+
+    function scheduleReminderToast() {
+      showToast('Reminder Scheduled', `We've saved your ₹${weeklyAmount}/wk goal. You will receive an SMS/WhatsApp prompt at 8:00 PM today.`);
+    }
+
+    // STAGE 3: KYC INPUT VALIDATION
+    function handlePanInput(input) {
+      input.value = input.value.toUpperCase().replace(/[^A-Z0-9]/g, '');
+      const badge = document.getElementById('panBadge');
+      const panRegex = /^[A-Z]{5}[0-9]{4}[A-Z]{1}$/;
+      
+      if (panRegex.test(input.value)) {
+        badge.classList.remove('hidden');
+      } else {
+        badge.classList.add('hidden');
+      }
+    }
+
+    function presetSamplePan() {
+      const panInput = document.getElementById('panInput');
+      panInput.value = 'ABCDE1234F';
+      handlePanInput(panInput);
+    }
+
+    function handleAadhaarInput(input) {
+      input.value = input.value.replace(/[^0-9]/g, '');
+    }
+
+    // STAGE 4: ANTI-FREEZE LIVE TELEMETRY
+    function startVerificationTelemetry() {
+      // Clear any prior interval
+      if (telemetryTimerInterval) clearInterval(telemetryTimerInterval);
+
+      telemetrySeconds = 0.0;
+      const timerEl = document.getElementById('telemetryTimer');
+      const advBtn = document.getElementById('teleAdvanceBtn');
+
+      // Reset Telemetry UI elements
+      const s1 = document.getElementById('teleStep1');
+      const s2 = document.getElementById('teleStep2');
+      const s3 = document.getElementById('teleStep3');
+
+      const i1 = document.getElementById('teleIcon1');
+      const i2 = document.getElementById('teleIcon2');
+      const i3 = document.getElementById('teleIcon3');
+
+      const stat1 = document.getElementById('teleStatus1');
+      const stat2 = document.getElementById('teleStatus2');
+      const stat3 = document.getElementById('teleStatus3');
+
+      advBtn.disabled = true;
+      advBtn.className = "w-full h-13 py-3.5 px-4 bg-outline-variant text-on-surface-variant font-bold text-sm rounded-xl flex items-center justify-center gap-2 cursor-not-allowed transition-all";
+
+      // Step 1 Active
+      s1.className = "p-3.5 rounded-2xl border-2 border-secondary bg-surface-container-low transition-all";
+      i1.innerHTML = '<span class="material-symbols-outlined text-sm animate-spin text-secondary">sync</span>';
+      stat1.innerText = "Checking";
+      stat1.className = "text-[10px] font-mono px-2 py-0.5 rounded bg-surface-container font-bold text-secondary";
+
+      // Sub step 2 queued
+      s2.className = "p-3.5 rounded-2xl border bg-surface-container-lowest border-outline-variant/50 transition-all opacity-50";
+      i2.innerHTML = '<span class="material-symbols-outlined text-sm">hourglass_top</span>';
+      stat2.innerText = "Queued";
+
+      // Sub step 3 queued
+      s3.className = "p-3.5 rounded-2xl border bg-surface-container-lowest border-outline-variant/50 transition-all opacity-50";
+      i3.innerHTML = '<span class="material-symbols-outlined text-sm">inventory_2</span>';
+      stat3.innerText = "Queued";
+
+      // Start elapsed timer
+      telemetryTimerInterval = setInterval(() => {
+        telemetrySeconds += 0.1;
+        timerEl.innerText = `Elapsed: ${telemetrySeconds.toFixed(1)}s / ~10s`;
+
+        // Milestone 1 (1.8s) -> PAN validated
+        if (telemetrySeconds >= 1.8 && stat1.innerText !== "Complete") {
+          stat1.innerText = "Complete";
+          stat1.className = "text-[10px] font-mono px-2 py-0.5 rounded bg-secondary-container text-on-secondary-fixed font-bold";
+          i1.className = "size-8 rounded-full bg-secondary text-on-secondary flex items-center justify-center text-xs";
+          i1.innerHTML = '<span class="material-symbols-outlined text-sm">check</span>';
+          document.getElementById('teleDetail1').innerText = "NSDL Tax Registry match: 100% verified";
+
+          // Trigger Step 2
+          s2.classList.remove('opacity-50');
+          s2.className = "p-3.5 rounded-2xl border-2 border-secondary bg-surface-container-low transition-all";
+          i2.innerHTML = '<span class="material-symbols-outlined text-sm animate-spin text-secondary">sync</span>';
+          stat2.innerText = "Verifying";
+          stat2.className = "text-[10px] font-mono px-2 py-0.5 rounded bg-surface-container font-bold text-secondary";
+        }
+
+        // Milestone 2 (4.2s) -> DigiLocker Profile fetched
+        if (telemetrySeconds >= 4.2 && stat2.innerText !== "Verified") {
+          stat2.innerText = "Verified";
+          stat2.className = "text-[10px] font-mono px-2 py-0.5 rounded bg-secondary-container text-on-secondary-fixed font-bold";
+          i2.className = "size-8 rounded-full bg-secondary text-on-secondary flex items-center justify-center text-xs";
+          i2.innerHTML = '<span class="material-symbols-outlined text-sm">check</span>';
+          document.getElementById('teleDetail2').innerText = "DigiLocker e-KYC XML token authenticated";
+
+          // Trigger Step 3
+          s3.classList.remove('opacity-50');
+          s3.className = "p-3.5 rounded-2xl border-2 border-secondary bg-surface-container-low transition-all";
+          i3.innerHTML = '<span class="material-symbols-outlined text-sm animate-spin text-secondary">sync</span>';
+          stat3.innerText = "Allotting";
+          stat3.className = "text-[10px] font-mono px-2 py-0.5 rounded bg-surface-container font-bold text-secondary";
+        }
+
+        // Milestone 3 (6.8s) -> Folio Created
+        if (telemetrySeconds >= 6.8 && stat3.innerText !== "Folio Ready") {
+          stat3.innerText = "Folio Ready";
+          stat3.className = "text-[10px] font-mono px-2 py-0.5 rounded bg-secondary-container text-on-secondary-fixed font-bold";
+          i3.className = "size-8 rounded-full bg-secondary text-on-secondary flex items-center justify-center text-xs";
+          i3.innerHTML = '<span class="material-symbols-outlined text-sm">check</span>';
+          document.getElementById('teleDetail3').innerText = "Folio #SP-884920 allotted in zero-comm index pool";
+
+          clearInterval(telemetryTimerInterval);
+          timerEl.innerText = `Completed in ${telemetrySeconds.toFixed(1)}s!`;
+
+          // Unlock CTA
+          advBtn.disabled = false;
+          advBtn.className = "w-full h-13 py-3.5 px-4 bg-primary-container text-secondary-fixed font-bold text-sm rounded-xl flex items-center justify-center gap-2 shadow-lg hover:bg-black transition-all transform active:scale-[0.99]";
+        }
+
+      }, 100);
+    }
+
+    function toggleSlowNetworkTest() {
+      slowNetworkActive = !slowNetworkActive;
+      const banner = document.getElementById('slowNetworkBanner');
+      const btn = document.getElementById('slowNetworkToggleBtn');
+
+      if (slowNetworkActive) {
+        banner.classList.remove('hidden');
+        btn.innerText = "Dismiss Test";
+        btn.classList.add('bg-tertiary-container', 'text-surface-container-lowest');
+      } else {
+        banner.classList.add('hidden');
+        btn.innerText = "Toggle Test";
+        btn.classList.remove('bg-tertiary-container', 'text-surface-container-lowest');
+      }
+    }
+
+    // STAGE 5: UPI BLOOM & CELEBRATION
+    function selectUpiApp(app) {
+      selectedUpi = app;
+      const apps = ['gpay', 'phonepe', 'paytm', 'bhim'];
+      apps.forEach(a => {
+        const el = document.getElementById(`upi-${a}`);
+        if (a === app) {
+          el.className = "upi-option p-2.5 rounded-xl border-2 border-secondary bg-surface-container-low flex flex-col items-center justify-center gap-1 transition-all";
+          el.querySelector('span:last-child').className = "text-[9px] font-medium text-secondary";
+          el.querySelector('span:last-child').innerText = "Ready";
+        } else {
+          el.className = "upi-option p-2.5 rounded-xl border border-surface-container-high bg-surface-container-lowest flex flex-col items-center justify-center gap-1 transition-all";
+          el.querySelector('span:last-child').className = "text-[9px] text-on-surface-variant";
+          el.querySelector('span:last-child').innerText = "Tap";
+        }
+      });
+    }
+
+    function triggerUpiPaymentSuccess() {
+      const payBtn = document.getElementById('btnPayUpi');
+      const payText = document.getElementById('btnPayText');
+      const plantIcon = document.getElementById('plantIcon');
+      const referralCard = document.getElementById('referralCard');
+
+      payBtn.disabled = true;
+      payText.innerText = "Authorizing UPI AutoPay...";
+      
+      setTimeout(() => {
+        payText.innerText = "✓ ₹100 Invested • Koru Bloomed!";
+        payBtn.className = "w-full h-14 py-3.5 px-4 bg-secondary text-on-secondary font-bold text-sm rounded-xl flex items-center justify-center gap-2 shadow-xl";
+        
+        // Plant bloom animation
+        plantIcon.innerText = "spa";
+        plantIcon.className = "material-symbols-outlined text-6xl text-secondary select-none transition-transform duration-700 scale-125";
+        document.getElementById('plantStateLabel').innerText = "🌟 FLOWERING SAPLING BLOOM";
+
+        // Show referral card
+        referralCard.classList.remove('hidden');
+
+        // Confetti Canvas Blast
+        launchConfetti();
+        showToast("First ₹100 Bloom Successful!", "Your auto-invest habit is officially alive. Folio #SP-884920 allotted.");
+      }, 1200);
+    }
+
+    function copyReferralLink() {
+      navigator.clipboard.writeText("https://koru.in/join/BLOOM100").catch(() => {});
+      showToast("Link Copied!", "Share with friends to grant them a ₹50 starter seed.");
+    }
+
+    // TOAST UTILITIES
+    let toastTimeout = null;
+    function showToast(title, msg) {
+      const toast = document.getElementById('toastNotification');
+      document.getElementById('toastHeading').innerText = title;
+      document.getElementById('toastMessage').innerText = msg;
+      
+      toast.classList.remove('translate-x-96', 'opacity-0');
+      toast.classList.add('translate-x-0', 'opacity-100');
+
+      if (toastTimeout) clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(hideToast, 4000);
+    }
+
+    function hideToast() {
+      const toast = document.getElementById('toastNotification');
+      toast.classList.remove('translate-x-0', 'opacity-100');
+      toast.classList.add('translate-x-96', 'opacity-0');
+    }
+
+    // RESET FLOW
+    function resetFlow() {
+      if (telemetryTimerInterval) clearInterval(telemetryTimerInterval);
+      checklistState = { pan: true, aadhaar: true };
+      slowNetworkActive = false;
+      document.getElementById('slowNetworkBanner').classList.add('hidden');
+      document.getElementById('btnPayUpi').disabled = false;
+      document.getElementById('btnPayText').innerText = "Pay ₹100 via UPI & Bloom Your Koru";
+      document.getElementById('btnPayUpi').className = "w-full h-14 py-3.5 px-4 bg-primary-container hover:bg-black text-secondary-fixed font-bold text-sm rounded-xl flex items-center justify-center gap-2 shadow-xl transition-all transform active:scale-[0.98]";
+      document.getElementById('referralCard').classList.add('hidden');
+      document.getElementById('plantIcon').innerText = "psychiatry";
+      document.getElementById('plantIcon').className = "material-symbols-outlined text-5xl text-secondary select-none";
+      document.getElementById('plantStateLabel').innerText = "Stage 5 Bloom Achieved";
+      
+      selectGoal('emergency', 100);
+      validateChecklist();
+      navigateToStep(1);
+      showToast("Prototype Reset", "Onboarding journey has been reset to Stage 1.");
+    }
+
+    // LIGHTWEIGHT CONFETTI ENGINE (No external library)
+    function launchConfetti() {
+      const canvas = document.getElementById('confettiCanvas');
+      canvas.classList.remove('hidden');
+      const ctx = canvas.getContext('2d');
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+
+      const particles = [];
+      const colors = ['#006c49', '#6cf8bb', '#d97706', '#ffdcc3', '#0a2118'];
+
+      for (let i = 0; i < 90; i++) {
+        particles.push({
+          x: canvas.width / 2,
+          y: canvas.height * 0.45,
+          vx: (Math.random() - 0.5) * 12,
+          vy: (Math.random() - 0.7) * 14,
+          size: Math.random() * 8 + 4,
+          color: colors[Math.floor(Math.random() * colors.length)],
+          rotation: Math.random() * 360,
+          vrot: (Math.random() - 0.5) * 10,
+          opacity: 1
+        });
+      }
+
+      let frames = 0;
+      function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        let activeParticles = 0;
+
+        particles.forEach(p => {
+          p.x += p.vx;
+          p.y += p.vy;
+          p.vy += 0.35; // gravity
+          p.rotation += p.vrot;
+          p.opacity -= 0.012;
+
+          if (p.opacity > 0) {
+            activeParticles++;
+            ctx.save();
+            ctx.translate(p.x, p.y);
+            ctx.rotate((p.rotation * Math.PI) / 180);
+            ctx.globalAlpha = p.opacity;
+            ctx.fillStyle = p.color;
+            ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size * 1.4);
+            ctx.restore();
+          }
+        });
+
+        frames++;
+        if (activeParticles > 0 && frames < 120) {
+          requestAnimationFrame(animate);
+        } else {
+          canvas.classList.add('hidden');
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+        }
+      }
+      requestAnimationFrame(animate);
+    }
+
+    // Initialize with PAN check active
+    window.addEventListener('DOMContentLoaded', () => {
+      handlePanInput(document.getElementById('panInput'));
+    });
+  </script>
+</body></html>

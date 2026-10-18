@@ -1,0 +1,752 @@
+<!DOCTYPE html><html class="light" lang="hi"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>स्प्राउट 2.0 • Sprout 2.0 | Sovereign Micro-Investing</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&amp;family=Martel:wght@400;600;700&amp;family=Noto+Sans+Devanagari:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;family=Rozha+One&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "on-secondary-fixed": "#002113",
+            "on-surface": "#0f1f18",
+            "on-tertiary-fixed-variant": "#6e3900",
+            "surface-container-high": "#daece2",
+            "on-secondary-container": "#00714d",
+            "secondary-container": "#6cf8bb",
+            "secondary-fixed": "#6ffbbe",
+            "surface-variant": "#d5e7dc",
+            "primary": "#000302",
+            "background": "#ebfef3",
+            "surface": "#ebfef3",
+            "surface-bright": "#ebfef3",
+            "primary-container": "#0a2118",
+            "inverse-surface": "#24342d",
+            "on-tertiary-container": "#c96d00",
+            "on-primary-fixed": "#092017",
+            "on-background": "#0f1f18",
+            "error": "#ba1a1a",
+            "surface-container-lowest": "#ffffff",
+            "tertiary-fixed-dim": "#ffb77d",
+            "secondary": "#006c49",
+            "surface-dim": "#ccded4",
+            "tertiary-fixed": "#ffdcc3",
+            "surface-container": "#e0f2e7",
+            "surface-tint": "#4c6358",
+            "secondary-fixed-dim": "#4edea3",
+            "on-primary": "#ffffff",
+            "outline": "#727974",
+            "tertiary-container": "#311600",
+            "on-primary-fixed-variant": "#354c41",
+            "on-secondary": "#ffffff",
+            "on-error": "#ffffff",
+            "tertiary": "#070200",
+            "outline-variant": "#c2c8c3",
+            "inverse-primary": "#b3ccbe",
+            "inverse-on-surface": "#e3f5ea",
+            "on-surface-variant": "#424844",
+            "primary-fixed-dim": "#b3ccbe",
+            "on-tertiary-fixed": "#2f1500",
+            "error-container": "#ffdad6",
+            "surface-container-highest": "#d5e7dc",
+            "on-primary-container": "#728a7e",
+            "primary-fixed": "#cee9da",
+            "on-error-container": "#93000a",
+            "surface-container-low": "#e6f8ed",
+            "on-tertiary": "#ffffff",
+            "on-secondary-fixed-variant": "#005236"
+          },
+          borderRadius: {
+            DEFAULT: "0.25rem",
+            lg: "0.5rem",
+            xl: "0.75rem",
+            full: "9999px"
+          },
+          fontFamily: {
+            "devanagari": ['"Noto Sans Devanagari"', '"Plus Jakarta Sans"', 'sans-serif'],
+            "serif-dev": ['"Martel"', 'serif'],
+            "display-dev": ['"Rozha One"', 'serif'],
+            "label-mono-sm": ["JetBrains Mono", "monospace"],
+            "body-lg": ["Plus Jakarta Sans", '"Noto Sans Devanagari"', "sans-serif"],
+            "headline-xl-mobile": ["Plus Jakarta Sans", '"Noto Sans Devanagari"', "sans-serif"],
+            "headline-md": ["Plus Jakarta Sans", '"Noto Sans Devanagari"', "sans-serif"],
+            "body-md": ["Plus Jakarta Sans", '"Noto Sans Devanagari"', "sans-serif"],
+            "headline-lg": ["Plus Jakarta Sans", '"Noto Sans Devanagari"', "sans-serif"],
+            "legal-disclaimer": ["Plus Jakarta Sans", '"Noto Sans Devanagari"', "sans-serif"],
+            "body-sm": ["Plus Jakarta Sans", '"Noto Sans Devanagari"', "sans-serif"],
+            "headline-sm": ["Plus Jakarta Sans", '"Noto Sans Devanagari"', "sans-serif"],
+            "headline-xl": ["Plus Jakarta Sans", '"Noto Sans Devanagari"', "sans-serif"],
+            "label-mono-lg": ["JetBrains Mono", "monospace"]
+          },
+          fontSize: {
+            "label-mono-sm": ["12px", { lineHeight: "16px", letterSpacing: "0.04em", fontWeight: "500" }],
+            "body-lg": ["16px", { lineHeight: "26px", fontWeight: "400" }],
+            "headline-xl-mobile": ["32px", { lineHeight: "40px", letterSpacing: "-0.02em", fontWeight: "700" }],
+            "headline-md": ["22px", { lineHeight: "32px", letterSpacing: "-0.01em", fontWeight: "600" }],
+            "body-md": ["14px", { lineHeight: "22px", fontWeight: "400" }],
+            "headline-lg": ["28px", { lineHeight: "38px", letterSpacing: "-0.015em", fontWeight: "600" }],
+            "legal-disclaimer": ["12.5px", { lineHeight: "18px", letterSpacing: "0.01em", fontWeight: "400" }],
+            "body-sm": ["13px", { lineHeight: "19px", fontWeight: "500" }],
+            "headline-sm": ["18px", { lineHeight: "26px", fontWeight: "600" }],
+            "headline-xl": ["40px", { lineHeight: "50px", letterSpacing: "-0.02em", fontWeight: "700" }],
+            "label-mono-lg": ["18px", { lineHeight: "24px", letterSpacing: "0.08em", fontWeight: "600" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .dev-line-height {
+      line-height: 1.52 !important;
+    }
+    input[type=range]::-webkit-slider-thumb {
+      height: 24px;
+      width: 24px;
+      border-radius: 9999px;
+      background: #006c49;
+      cursor: pointer;
+      -webkit-appearance: none;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+    }
+  </style>
+</head>
+<body class="bg-[#f9fbfa] text-on-surface antialiased font-devanagari min-h-screen flex flex-col">
+<!-- Top Navigation & Stage Header Bar (Shared Component Anchor Replica) -->
+<div class="relative flex h-auto w-full flex-col bg-[#f9fbfa] group/design-root overflow-x-hidden border-b border-outline-variant/30">
+<div class="layout-container flex h-full grow flex-col">
+<div class="px-4 md:px-12 lg:px-40 flex flex-1 justify-center py-3">
+<div class="layout-content-container flex flex-col max-w-[960px] flex-1">
+<header class="flex flex-wrap items-center justify-between gap-4 py-2 border-b border-solid border-b-[#e9f1ee]">
+<div class="flex items-center gap-3 text-[#101915]">
+<div class="size-6 text-secondary flex items-center justify-center">
+<svg class="w-full h-full" fill="currentColor" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path clip-rule="evenodd" d="M39.475 21.6262C40.358 21.4363 40.6863 21.5589 40.7581 21.5934C40.7876 21.655 40.8547 21.857 40.8082 22.3336C40.7408 23.0255 40.4502 24.0046 39.8572 25.2301C38.6799 27.6631 36.5085 30.6631 33.5858 33.5858C30.6631 36.5085 27.6632 38.6799 25.2301 39.8572C24.0046 40.4502 23.0255 40.7407 22.3336 40.8082C21.8571 40.8547 21.6551 40.7875 21.5934 40.7581C21.5589 40.6863 21.4363 40.358 21.6262 39.475C21.8562 38.4054 22.4689 36.9657 23.5038 35.2817C24.7575 33.2417 26.5497 30.9744 28.7621 28.762C30.9744 26.5497 33.2417 24.7574 35.2817 23.5037C36.9657 22.4689 38.4054 21.8562 39.475 21.6262ZM4.41189 29.2403L18.7597 43.5881C19.8813 44.7097 21.4027 44.9179 22.7217 44.7893C24.0585 44.659 25.5148 44.1631 26.9723 43.4579C29.9052 42.0387 33.2618 39.5667 36.4142 36.4142C39.5667 33.2618 42.0387 29.9052 43.4579 26.9723C44.1631 25.5148 44.659 24.0585 44.7893 22.7217C44.9179 21.4027 44.7097 19.8813 43.5881 18.7597L29.2403 4.41187C27.8527 3.02428 25.8765 3.02573 24.2861 3.36776C22.6081 3.72863 20.7334 4.58419 18.8396 5.74801C16.4978 7.18716 13.9881 9.18353 11.5858 11.5858C9.18354 13.988 7.18717 16.4978 5.74802 18.8396C4.58421 20.7334 3.72865 22.6081 3.36778 24.2861C3.02574 25.8765 3.02429 27.8527 4.41189 29.2403Z" fill-rule="evenodd"></path>
+</svg>
+</div>
+<div>
+<h2 class="text-on-surface text-base md:text-lg font-bold leading-tight tracking-[-0.015em]">स्प्राउट 2.0 • Sprout 2.0</h2>
+<p class="text-[11px] text-on-surface-variant font-medium">सॉवरेन माइक्रो-इन्वेस्टिंग • Sovereign Micro-Investing</p>
+</div>
+</div>
+<!-- Language Toggle and SEBI Badge -->
+<div class="flex items-center gap-3">
+<!-- Active Bilingual Switcher -->
+<div class="flex items-center bg-surface-container rounded-lg p-0.5 border border-outline-variant/40 text-xs font-semibold">
+<button class="px-2.5 py-1 rounded transition text-on-surface-variant hover:text-on-surface" id="lang-en" onclick="setLangMode('en')">EN</button>
+<button class="px-2.5 py-1 rounded bg-surface-container-lowest text-secondary shadow-sm font-bold" id="lang-hi" onclick="setLangMode('hi')">हिंदी (सक्रिय)</button>
+</div>
+<div class="hidden sm:flex items-center gap-1.5 px-3 py-1.5 bg-primary-container text-surface-container-lowest text-xs rounded-lg font-mono">
+<span class="material-symbols-outlined text-[14px] text-secondary-fixed">verified</span>
+<span>सेबी RIA #INA00014229</span>
+</div>
+</div>
+</header>
+<!-- Interactive Stage Progress Stepper Bar -->
+<div class="flex flex-col gap-2.5 px-2 pt-4 pb-2">
+<div class="flex justify-between items-center text-sm font-semibold">
+<span class="text-on-surface dev-line-height flex items-center gap-2" id="stage-badge-label">
+<span class="inline-block w-2.5 h-2.5 rounded-full bg-secondary animate-pulse"></span>
+                कोरू चरण 1: अंकुरित बीज (Rooted Seed)
+              </span>
+<span class="text-on-surface-variant font-mono text-xs bg-surface-container px-2 py-0.5 rounded" id="stage-counter">1/5</span>
+</div>
+<div class="w-full bg-[#d4e3dd] h-2 rounded-full overflow-hidden flex">
+<div class="bg-primary-container transition-all duration-500 rounded-full" id="progress-bar-fill" style="width: 20%;"></div>
+</div>
+<div class="flex justify-between text-xs text-on-surface-variant">
+<span class="text-secondary font-medium" id="stage-sub-status">वेब-टू-ऐप हैंडॉफ़ • Web-to-App Handoff</span>
+<span class="hidden md:inline">एन्क्रिप्टेड एंड-टू-एंड 256-Bit</span>
+</div>
+</div>
+<!-- Quick Stage Switcher for Prototype Review -->
+<div class="flex items-center gap-1.5 px-2 py-2 overflow-x-auto text-xs scrollbar-none border-t border-b border-surface-container my-1">
+<span class="text-on-surface-variant font-mono text-[11px] uppercase mr-1">कूदें (Stages):</span>
+<button class="stage-nav-pill px-2.5 py-1 rounded-full text-xs font-medium bg-surface-container-high text-on-surface" data-stage="1" onclick="goToStage(1)">1. बीज (Seed)</button>
+<button class="stage-nav-pill px-2.5 py-1 rounded-full text-xs font-medium hover:bg-surface-container text-on-surface-variant" data-stage="2" onclick="goToStage(2)">2. तैयारी (Check)</button>
+<button class="stage-nav-pill px-2.5 py-1 rounded-full text-xs font-medium hover:bg-surface-container text-on-surface-variant" data-stage="3" onclick="goToStage(3)">3. केवाईसी (KYC)</button>
+<button class="stage-nav-pill px-2.5 py-1 rounded-full text-xs font-medium hover:bg-surface-container text-on-surface-variant" data-stage="4" onclick="goToStage(4)">4. ट्रैकर (Live)</button>
+<button class="stage-nav-pill px-2.5 py-1 rounded-full text-xs font-medium hover:bg-surface-container text-on-surface-variant" data-stage="5" onclick="goToStage(5)">5. प्रस्फुटन (Bloom)</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Main Content Container with Stage Views -->
+<main class="flex-1 max-w-[960px] w-full mx-auto px-4 md:px-8 py-6">
+<!-- ================= STAGE 1: WEB-TO-APP HANDOFF ================= -->
+<section class="stage-view flex flex-col gap-6" id="stage-1">
+<div class="space-y-2">
+<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-secondary/10 text-secondary text-xs font-bold tracking-wide">
+<span class="material-symbols-outlined text-sm">spa</span>
+<span>पहला चरण • FIRST HABIT SEED</span>
+</div>
+<h1 class="text-2xl md:text-3xl font-bold text-on-surface tracking-tight dev-line-height">
+          आपका ₹100 का इमरजेंसी कुशन तैयार है।
+        </h1>
+<p class="text-base text-on-surface-variant dev-line-height">
+          Your ₹100 Emergency Cushion is ready. वेबसाइट से सुरक्षित रूप से सिंक किया गया लक्ष्य।
+        </p>
+</div>
+<!-- Segmented Goal Selector Radio Pill (Preserved from Shared Structure) -->
+<div class="bg-surface-container p-1 rounded-xl">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-1">
+<label class="flex cursor-pointer items-center justify-center p-3 rounded-lg transition bg-surface-container-lowest text-on-surface shadow-sm font-medium text-sm border border-secondary/20">
+<input checked="" class="hidden" name="goal-plan" onchange="updateGoalPlan(100, 'कुशन • ₹100/हफ़्ता')" type="radio" value="cushion">
+<div class="text-center">
+<span class="font-bold text-secondary block">कुशन • ₹100/हफ़्ता</span>
+<span class="text-xs text-on-surface-variant">लिक्विड म्यूचुअल फंड (Cushion)</span>
+</div>
+</label>
+<label class="flex cursor-pointer items-center justify-center p-3 rounded-lg transition hover:bg-surface-container-lowest/60 text-on-surface-variant font-medium text-sm">
+<input class="hidden" name="goal-plan" onchange="updateGoalPlan(250, 'माइलस्टोन • ₹250/हफ़्ता')" type="radio" value="milestone">
+<div class="text-center">
+<span class="font-bold block text-on-surface">माइलस्टोन • ₹250/हफ़्ता</span>
+<span class="text-xs text-on-surface-variant">शॉर्ट-टर्म गोल (Milestone)</span>
+</div>
+</label>
+<label class="flex cursor-pointer items-center justify-center p-3 rounded-lg transition hover:bg-surface-container-lowest/60 text-on-surface-variant font-medium text-sm">
+<input class="hidden" name="goal-plan" onchange="updateGoalPlan(500, 'वेल्थ • ₹500/हफ़्ता')" type="radio" value="wealth">
+<div class="text-center">
+<span class="font-bold block text-on-surface">वेल्थ • ₹500/हफ़्ता</span>
+<span class="text-xs text-on-surface-variant">दीर्घकालिक विकास (Wealth)</span>
+</div>
+</label>
+</div>
+</div>
+<!-- Habit Calculator & Visual Growth -->
+<div class="bg-surface-container-low border border-outline-variant/40 rounded-2xl p-6 flex flex-col md:flex-row gap-6 items-center">
+<div class="flex-1 w-full space-y-4">
+<div class="flex justify-between items-center">
+<span class="text-sm font-semibold text-on-surface">साप्ताहिक बचत राशि (Weekly Habit):</span>
+<span class="text-lg font-mono font-bold text-secondary bg-surface-container px-3 py-1 rounded-lg" id="slider-val-label">₹100 / हफ़्ता</span>
+</div>
+<input class="w-full h-2 bg-surface-container-highest rounded-lg appearance-none cursor-pointer" id="saving-slider" max="2000" min="100" oninput="calculateCorpus(this.value)" step="50" type="range" value="100">
+<div class="flex justify-between text-xs text-on-surface-variant font-mono">
+<span>₹100 (न्यूनतम)</span>
+<span>₹1,000</span>
+<span>₹2,000</span>
+</div>
+<!-- Corpus Preview -->
+<div class="p-4 bg-surface-container-lowest rounded-xl border border-secondary/20 flex items-center justify-between">
+<div>
+<p class="text-xs text-on-surface-variant font-medium">अनुमानित 5-वर्षीय कॉपर्स (Projected 5-Yr Corpus):</p>
+<h3 class="text-xl md:text-2xl font-mono font-bold text-on-surface" id="corpus-val">~₹34,450</h3>
+</div>
+<span class="px-2.5 py-1 bg-secondary-fixed text-on-secondary-fixed text-xs font-semibold rounded-full font-mono">
+              11% वार्षिक ब्याज*
+            </span>
+</div>
+</div>
+<!-- Decorative Seed Visual Anchor -->
+<div class="w-full md:w-56 bg-surface-container-highest/50 rounded-xl p-4 flex flex-col items-center justify-center text-center">
+<div class="w-20 h-20 rounded-full bg-secondary/15 flex items-center justify-center mb-2">
+<span class="material-symbols-outlined text-4xl text-secondary">potted_plant</span>
+</div>
+<span class="text-xs font-bold text-on-surface">कोरू सिद्धांत (Koru Principle)</span>
+<p class="text-[11px] text-on-surface-variant mt-1 leading-normal">
+            हर छोटी बचत से वित्तीय सुरक्षा का सशक्त वटवृक्ष अंकुरित होता है।
+          </p>
+</div>
+</div>
+<!-- Action Button -->
+<div class="pt-2">
+<button class="w-full py-4 px-6 bg-primary-container text-on-primary rounded-xl font-bold text-base hover:bg-black flex items-center justify-center gap-3 shadow-lg transition" onclick="goToStage(2)">
+<span>60-सेकंड केवाईसी शुरू करें →</span>
+<span class="text-xs opacity-75 font-normal tracking-wide">(Proceed to 60-Sec KYC Check)</span>
+</button>
+<p class="text-center text-xs text-on-surface-variant mt-2">
+          🔒 कोई बैंक लॉगिन क्रेडेंशियल आवश्यक नहीं • केवल बुनियादी पहचान
+        </p>
+</div>
+</section>
+<!-- ================= STAGE 2: READINESS CHECKLIST ================= -->
+<section class="stage-view hidden flex-col gap-6" id="stage-2">
+<div class="space-y-2">
+<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-secondary/10 text-secondary text-xs font-bold">
+<span class="material-symbols-outlined text-sm">shield</span>
+<span>कोरू चरण 2: रक्षित तना (Shielded Stem)</span>
+</div>
+<h2 class="text-2xl md:text-3xl font-bold text-on-surface tracking-tight dev-line-height">
+          शुरू करने से पहले: ये 2 चीज़ें पास रखें
+        </h2>
+<p class="text-base text-on-surface-variant dev-line-height">
+          Before we begin: Keep these 2 things nearby. हम पहले ही सुनिश्चित करते हैं ताकि आप प्रक्रिया के बीच में न अटकें।
+        </p>
+</div>
+<!-- Checklist Interactive Cards -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- Item 1 -->
+<label class="flex items-start gap-4 p-5 bg-surface-container-lowest border-2 border-secondary rounded-2xl cursor-pointer hover:shadow-md transition">
+<input checked="" class="mt-1 h-5 w-5 rounded border-outline text-secondary focus:ring-secondary" id="chk-pan" type="checkbox">
+<div class="space-y-1">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-lg">badge</span>
+<h3 class="font-bold text-base text-on-surface dev-line-height">10-अंकों का पैन कार्ड नंबर</h3>
+</div>
+<p class="text-xs text-on-surface-variant dev-line-height">
+              PAN Card Number (भौतिक कार्ड की आवश्यकता नहीं, केवल नंबर पर्याप्त है)।
+            </p>
+<span class="inline-block text-[11px] font-mono bg-secondary-fixed/40 text-on-secondary-fixed px-2 py-0.5 rounded">
+              सेबी वैधानिक आवश्यकता (Mandatory)
+            </span>
+</div>
+</label>
+<!-- Item 2 -->
+<label class="flex items-start gap-4 p-5 bg-surface-container-lowest border-2 border-secondary rounded-2xl cursor-pointer hover:shadow-md transition">
+<input checked="" class="mt-1 h-5 w-5 rounded border-outline text-secondary focus:ring-secondary" id="chk-aadhaar" type="checkbox">
+<div class="space-y-1">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-lg">smartphone</span>
+<h3 class="font-bold text-base text-on-surface dev-line-height">आधार-लिंक्ड मोबाइल नंबर</h3>
+</div>
+<p class="text-xs text-on-surface-variant dev-line-height">
+              डिजीलॉकर से सुरक्षित और तत्काल ओटीपी सत्यापन प्राप्त करने के लिए।
+            </p>
+<span class="inline-block text-[11px] font-mono bg-secondary-fixed/40 text-on-secondary-fixed px-2 py-0.5 rounded">
+              त्वरित 1-क्लिक पेपरलेस प्रमाणीकरण
+            </span>
+</div>
+</label>
+</div>
+<!-- Trust Assurance Box -->
+<div class="p-4 bg-surface-container rounded-xl flex items-center gap-3 text-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-secondary text-xl">lock</span>
+<span>आपका डेटा कभी साझा या बेचा नहीं जाता है। स्प्राउट सीधे भारत सरकार के डिजीलॉकर और केआरए (KRA) प्रोटोकॉल से जुड़ा है।</span>
+</div>
+<!-- Actions -->
+<div class="flex flex-col gap-3 pt-2">
+<button class="w-full py-4 px-6 bg-primary-container text-on-primary rounded-xl font-bold text-base hover:bg-black flex items-center justify-center gap-2 shadow-md transition" onclick="goToStage(3)">
+<span>मेरे पास दोनों तैयार हैं — आगे बढ़ें →</span>
+<span class="text-xs opacity-75 font-normal">(I Have Both Ready — Continue)</span>
+</button>
+<button class="w-full py-3 px-4 bg-transparent border border-outline-variant text-on-surface-variant hover:text-on-surface hover:bg-surface-container rounded-xl font-medium text-xs md:text-sm transition text-center" onclick="triggerReminderModal()">
+          अभी पैन नहीं है? लक्ष्य सहेजें और रात 8 बजे याद दिलाएं (Remind at 8 PM)
+        </button>
+</div>
+</section>
+<!-- ================= STAGE 3: REGULATED KYC INPUT ================= -->
+<section class="stage-view hidden flex-col gap-6" id="stage-3">
+<div class="space-y-2">
+<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-secondary/10 text-secondary text-xs font-bold">
+<span class="material-symbols-outlined text-sm">energy_savings_leaf</span>
+<span>कोरू चरण 3: खुलती पत्ती (Unfurling Leaf)</span>
+</div>
+<h2 class="text-2xl md:text-3xl font-bold text-on-surface tracking-tight dev-line-height">
+          नियामक निवेशक सत्यापन
+        </h2>
+<p class="text-base text-on-surface-variant dev-line-height">
+          Regulated Investor Verification. म्यूचुअल फंड फोलियो सृजन हेतु सेबी (SEBI) अनुपालन आवश्यक है।
+        </p>
+</div>
+<!-- Form Inputs Container -->
+<div class="bg-surface-container-lowest border border-outline-variant/60 rounded-2xl p-6 space-y-5 shadow-sm">
+<!-- PAN Field -->
+<div class="space-y-2">
+<div class="flex justify-between items-center">
+<label class="block text-sm font-bold text-on-surface">स्थायी खाता संख्या (PAN Card)</label>
+<span class="text-xs text-secondary font-mono flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">verified</span>
+              [✓ मान्य पैन संरचना]
+            </span>
+</div>
+<div class="relative">
+<input class="w-full px-4 py-3 font-mono text-lg font-bold tracking-widest text-on-surface bg-surface-container-low border border-outline-variant rounded-xl uppercase focus:border-secondary focus:ring-1 focus:ring-secondary" id="pan-input" maxlength="10" type="text" value="ABCDE1234F">
+<span class="absolute right-3 top-3.5 text-xs text-on-surface-variant bg-surface-container px-2 py-0.5 rounded">व्यक्तिगत खाता</span>
+</div>
+<p class="text-[12px] text-on-surface-variant">नाम: राजिंदर कुमार • NSDL डेटाबेस से मेल खाता है</p>
+</div>
+<!-- Aadhaar Digit Field -->
+<div class="space-y-2">
+<label class="block text-sm font-bold text-on-surface">डिजीलॉकर ओटीपी हेतु आधार के अंतिम 4 अंक</label>
+<div class="flex items-center gap-3">
+<div class="flex gap-1.5 text-on-surface-variant font-mono text-lg font-bold">
+<span class="px-2.5 py-2 bg-surface-container rounded-lg">XXXX</span>
+<span class="px-2.5 py-2 bg-surface-container rounded-lg">XXXX</span>
+</div>
+<input class="w-28 px-3 py-2 font-mono text-lg font-bold text-center tracking-widest text-on-surface bg-surface-container-low border border-outline-variant rounded-xl focus:border-secondary focus:ring-1 focus:ring-secondary" id="aadhaar-input" maxlength="4" type="text" value="9842">
+</div>
+<p class="text-[12px] text-on-surface-variant">आपके पंजीकृत मोबाइल ******4920 पर 6-अंकों का ओटीपी भेजा जाएगा।</p>
+</div>
+<!-- Security Reassurance Notice -->
+<div class="p-3.5 bg-surface-container rounded-xl flex items-center gap-2.5 text-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-secondary text-lg">encrypted</span>
+<span><strong>🔒 256-बिट एन्क्रिप्टेड</strong> • केवल रीड-ओनली सेबी केआरए सत्यापन (Read-only SEBI KRA Query)</span>
+</div>
+</div>
+<!-- Actions -->
+<div class="pt-2">
+<button class="w-full py-4 px-6 bg-primary-container text-on-primary rounded-xl font-bold text-base hover:bg-black flex items-center justify-center gap-2 shadow-md transition" onclick="simulateVerification()">
+<span>डिजीलॉकर से तुरंत सत्यापित करें →</span>
+<span class="text-xs opacity-75 font-normal">(Verify Instantly via DigiLocker)</span>
+</button>
+</div>
+</section>
+<!-- ================= STAGE 4: ANTI-FREEZE LIVE TRACKER ================= -->
+<section class="stage-view hidden flex-col gap-6" id="stage-4">
+<div class="space-y-2">
+<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-secondary/10 text-secondary text-xs font-bold">
+<span class="material-symbols-outlined text-sm">wb_sunny</span>
+<span>कोरू चरण 4: जीवंत धूप अंकुर (Pulsing Sunlit Sprout)</span>
+</div>
+<h2 class="text-2xl md:text-3xl font-bold text-on-surface tracking-tight dev-line-height">
+          निवेशक प्रोफ़ाइल सत्यापित हो रही है...
+        </h2>
+<p class="text-base text-on-surface-variant dev-line-height">
+          Verifying your investor profile with central depository systems.
+        </p>
+</div>
+<!-- Live Heartbeat Timer Badge -->
+<div class="flex items-center justify-between p-4 bg-surface-container-lowest border border-outline-variant rounded-2xl">
+<div class="flex items-center gap-3">
+<div class="relative flex items-center justify-center">
+<span class="w-4 h-4 rounded-full bg-secondary animate-ping absolute"></span>
+<span class="w-3 h-3 rounded-full bg-secondary relative"></span>
+</div>
+<div>
+<span class="text-xs font-bold text-on-surface block">बीता समय: <span class="font-mono text-secondary" id="heartbeat-sec">5s</span> / सामान्यतः 8–12s</span>
+<span class="text-[11px] text-on-surface-variant">कृपया ऐप बंद न करें या बैक बटन न दबाएं</span>
+</div>
+</div>
+<span class="text-xs font-mono bg-surface-container px-3 py-1 rounded-full text-secondary font-semibold">लाइव लिंक सक्रिय</span>
+</div>
+<!-- Reassurance Banner -->
+<div class="bg-secondary-fixed/30 border-l-4 border-secondary p-4 rounded-r-xl">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-secondary text-xl mt-0.5">info</span>
+<div>
+<h4 class="text-xs font-bold text-on-surface">कृपया इसी स्क्रीन पर रहें</h4>
+<p class="text-xs text-on-surface-variant dev-line-height mt-0.5">
+              ऐप रुका नहीं है — हम केंद्रीय रजिस्ट्री (NDSL/CAMS) से लाइव कनेक्ट कर रहे हैं ताकि कागजी कार्रवाई शून्य हो सके।
+            </p>
+</div>
+</div>
+</div>
+<!-- 3-Step Live Telemetry Checklist -->
+<div class="bg-surface-container-lowest border border-outline-variant/60 rounded-2xl p-6 space-y-4 shadow-sm">
+<h3 class="text-sm font-bold text-on-surface">प्रमाणीकरण टेलीमेट्री चेकलिस्ट:</h3>
+<div class="space-y-3 font-devanagari">
+<!-- Step 1 -->
+<div class="flex items-center gap-3 text-sm text-secondary font-semibold">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span>1. NSDL रजिस्ट्री के साथ पैन सत्यापन (पूर्ण)</span>
+</div>
+<!-- Step 2 -->
+<div class="flex items-center gap-3 text-sm text-on-surface font-semibold">
+<span class="material-symbols-outlined text-secondary animate-spin">sync</span>
+<span>2. डिजीलॉकर से प्रमाणित केवाईसी रिकॉर्ड प्राप्त हो रहा है...</span>
+</div>
+<!-- Step 3 -->
+<div class="flex items-center gap-3 text-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-outline">radio_button_unchecked</span>
+<span>3. आपका शून्य-कमीशन म्यूचुअल फंड फोलियो सक्रिय हो रहा है</span>
+</div>
+</div>
+</div>
+<!-- 4G Slow Fallback Card -->
+<div class="p-4 bg-surface-container rounded-xl flex items-start gap-3 border border-outline-variant/50">
+<span class="material-symbols-outlined text-on-surface-variant text-xl">network_check</span>
+<div class="space-y-1">
+<h4 class="text-xs font-bold text-on-surface">धीमा 4G नेटवर्क? (Weak Network Reassurance)</h4>
+<p class="text-xs text-on-surface-variant dev-line-height">
+            यदि 12 सेकंड से अधिक समय लगे, तो आपका पैन सुरक्षित है। व्हाट्सएप पर स्वतः अलर्ट प्राप्त करें।
+          </p>
+<button class="mt-2 text-xs font-bold text-secondary hover:underline flex items-center gap-1" onclick="goToStage(5)">
+<span>सिमुलेशन पूरा करें और आगे बढ़ें (Fast Forward)</span>
+<span class="material-symbols-outlined text-xs">fast_forward</span>
+</button>
+</div>
+</div>
+</section>
+<!-- ================= STAGE 5: FULL BLOOM & UPI SEED ================= -->
+<section class="stage-view hidden flex-col gap-6" id="stage-5">
+<!-- Full Emerald Celebration Badge -->
+<div class="bg-secondary-fixed/40 border border-secondary/40 rounded-2xl p-4 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-secondary flex items-center justify-center text-surface-container-lowest">
+<span class="material-symbols-outlined text-2xl">verified</span>
+</div>
+<div>
+<h4 class="text-sm font-bold text-on-surface">✓ केवाईसी सत्यापित • फोलियो #SP-884920 सक्रिय</h4>
+<p class="text-xs text-on-surface-variant">सेबी पंजीकृत म्यूचुअल फंड खाता सफलता से निर्मित</p>
+</div>
+</div>
+<span class="text-xs font-mono font-bold bg-surface-container-lowest px-2.5 py-1 rounded text-secondary shadow-sm">100% अनुपालन</span>
+</div>
+<div class="space-y-2">
+<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-secondary/10 text-secondary text-xs font-bold">
+<span class="material-symbols-outlined text-sm">filter_vintage</span>
+<span>कोरू चरण 5: पूर्ण पन्ना और स्वर्ण प्रस्फुटन (Full Emerald &amp; Gold Bloom)</span>
+</div>
+<h2 class="text-2xl md:text-3xl font-bold text-on-surface tracking-tight dev-line-height">
+          सत्यापन पूर्ण! अपना पहला ₹100 निवेश करें।
+        </h2>
+<p class="text-base text-on-surface-variant dev-line-height">
+          You're verified! Plant your first ₹100 to initiate your sovereign compounding habit.
+        </p>
+</div>
+<!-- Order Summary Card -->
+<div class="bg-surface-container-lowest border-2 border-secondary/30 rounded-2xl p-6 space-y-4 shadow-sm">
+<div class="flex justify-between items-start border-b border-surface-container pb-4">
+<div>
+<span class="text-xs text-secondary font-bold uppercase tracking-wider block">निवेश बास्केट (Investment Basket)</span>
+<h3 class="text-lg font-bold text-on-surface dev-line-height">इमरजेंसी कुशन बास्केट (Emergency Cushion)</h3>
+<p class="text-xs text-on-surface-variant">आदित्य बिड़ला सन लाइफ / निप्पॉन इंडिया लिक्विड फंड (Direct Plan)</p>
+</div>
+<div class="text-right">
+<span class="text-2xl font-mono font-bold text-on-surface">₹100</span>
+<span class="text-[11px] text-on-surface-variant block">शून्य ब्रोकरेज / No Fees</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-3 text-xs">
+<div class="bg-surface-container p-2.5 rounded-lg">
+<span class="text-on-surface-variant block">आवृत्ति (Frequency):</span>
+<span class="font-bold text-on-surface">साप्ताहिक ऑटोपायलट (Weekly)</span>
+</div>
+<div class="bg-surface-container p-2.5 rounded-lg">
+<span class="text-on-surface-variant block">निकासी समय (Liquidity):</span>
+<span class="font-bold text-on-surface">तुरंत बैंक खाते में (T+0 Hours)</span>
+</div>
+</div>
+<!-- Primary Emerald CTA Button -->
+<button class="w-full py-4 px-6 bg-[#10b981] hover:bg-[#059669] text-white rounded-xl font-bold text-base md:text-lg flex items-center justify-center gap-3 shadow-lg hover:shadow-xl transition transform active:scale-[0.99]" onclick="triggerPaymentSuccess()">
+<span class="material-symbols-outlined text-2xl">bolt</span>
+<span>UPI द्वारा ₹100 भुगतान करें और कोरू खिलाएं →</span>
+</button>
+<div class="flex items-center justify-center gap-4 text-xs text-on-surface-variant font-mono">
+<span>GPay</span> • <span>PhonePe</span> • <span>Paytm</span> • <span>BHIM UPI</span>
+</div>
+</div>
+<!-- Referral Incentive Card -->
+<div class="p-4 bg-tertiary-fixed/30 border border-tertiary-fixed-dim/50 rounded-2xl flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="text-2xl">🎁</span>
+<div>
+<h4 class="text-sm font-bold text-on-surface">मित्र को ₹50 का शुरुआती बीज उपहार दें</h4>
+<p class="text-xs text-on-surface-variant">Give ₹50 Seed to a friend — जब वे पहली बचत शुरू करेंगे, आपको ₹50 बोनस प्राप्त होगा।</p>
+</div>
+</div>
+<button class="px-3.5 py-1.5 bg-surface-container-lowest text-on-surface border border-outline-variant font-bold text-xs rounded-lg hover:bg-surface-container transition" onclick="shareLinkAlert()">
+          लिंक साझा करें
+        </button>
+</div>
+<!-- Reset Flow Option -->
+<div class="text-center pt-2">
+<button class="text-xs text-on-surface-variant hover:text-secondary underline" onclick="goToStage(1)">
+          ↺ पुन: पूर्वावलोकन शुरू करें (Restart Onboarding Prototype Walkthrough)
+        </button>
+</div>
+</section>
+</main>
+<!-- Statutory Compliance SEBI Footer (Mandatory Hindi Devanagari text) -->
+<footer class="mt-auto border-t border-outline-variant/40 bg-surface-container-low py-6 px-4 md:px-8">
+<div class="max-w-[960px] mx-auto space-y-3">
+<div class="flex flex-wrap items-center justify-between gap-2 text-xs font-mono text-on-surface-variant">
+<span>सेबी पंजीकृत निवेश सलाहकार (RIA): INA00014229</span>
+<span>AMFI ARN-250892 • BASL सदस्यता #1948</span>
+</div>
+<p class="font-devanagari text-[12.5px] text-on-surface-variant dev-line-height text-justify">
+<strong>सेबी / एएमएफआई विनियामक सूचना:</strong> प्रतिभूति बाजार में निवेश बाजार के जोखिमों के अधीन है। निवेश करने से पहले सभी योजना संबंधी दस्तावेजों को सावधानीपूर्वक पढ़ें। म्यूचुअल फंड रिटर्न की कोई गारंटी नहीं होती है और पिछला प्रदर्शन भविष्य के परिणामों का आश्वासन नहीं देता है।
+      </p>
+<div class="flex flex-wrap justify-between items-center text-[11px] text-on-surface-variant/80 pt-2 border-t border-surface-container">
+<span>© 2025 स्प्राउट फिनटेक प्राइवेट लिमिटेड • सर्वाधिकार सुरक्षित</span>
+<div class="flex gap-4">
+<a class="hover:underline" href="#">गोपनीयता नीति (Privacy)</a>
+<a class="hover:underline" href="#">उपयोग की शर्तें (Terms)</a>
+<a class="hover:underline" href="#">नियामक प्रकटीकरण (Disclosures)</a>
+</div>
+</div>
+</div>
+</footer>
+<!-- Notification Toast Modal -->
+<div class="fixed bottom-6 right-6 hidden z-50 bg-primary-container text-surface-container-lowest px-5 py-3 rounded-xl shadow-2xl border border-secondary text-sm font-devanagari flex items-center gap-3" id="toast">
+<span class="material-symbols-outlined text-secondary-fixed">check_circle</span>
+<span id="toast-text">सफलतापूर्वक अद्यतन किया गया!</span>
+</div>
+<!-- JavaScript Prototype State Interactions -->
+<script>
+    let currentStage = 1;
+    let currentLang = 'hi';
+    let heartbeatCounter = 5;
+    let heartbeatTimer = null;
+
+    // Stage Navigation
+    const stages = {
+      1: {
+        title: "कोरू चरण 1: अंकुरित बीज (Rooted Seed)",
+        sub: "वेब-टू-ऐप हैंडॉफ़ • Web-to-App Handoff",
+        progress: "20%",
+        counter: "1/5"
+      },
+      2: {
+        title: "कोरू चरण 2: रक्षित तना (Shielded Stem)",
+        sub: "दस्तावेज़ तत्परता चेकलिस्ट • Readiness Checklist",
+        progress: "40%",
+        counter: "2/5"
+      },
+      3: {
+        title: "कोरू चरण 3: खुलती पत्ती (Unfurling Leaf)",
+        sub: "नियामक केवाईसी सत्यापन • SEBI Regulated KYC",
+        progress: "60%",
+        counter: "3/5"
+      },
+      4: {
+        title: "कोरू चरण 4: जीवंत धूप अंकुर (Pulsing Sunlit Sprout)",
+        sub: "लाइव टेलीमेट्री ट्रैकर • Anti-Freeze Live Tracker",
+        progress: "80%",
+        counter: "4/5"
+      },
+      5: {
+        title: "कोरू चरण 5: पूर्ण पन्ना और स्वर्ण प्रस्फुटन (Full Bloom)",
+        sub: "पहला ₹100 यूपीआई निवेश • First UPI Seed",
+        progress: "100%",
+        counter: "5/5"
+      }
+    };
+
+    function goToStage(stageNum) {
+      currentStage = stageNum;
+      
+      // Toggle Views
+      document.querySelectorAll('.stage-view').forEach(view => view.classList.add('hidden'));
+      const activeView = document.getElementById(`stage-${stageNum}`);
+      if (activeView) activeView.classList.remove('hidden');
+
+      // Update Header Data
+      const data = stages[stageNum];
+      document.getElementById('stage-badge-label').innerHTML = `
+        <span class="inline-block w-2.5 h-2.5 rounded-full ${stageNum === 5 ? 'bg-secondary' : 'bg-secondary animate-pulse'}"></span>
+        ${data.title}
+      `;
+      document.getElementById('stage-sub-status').textContent = data.sub;
+      document.getElementById('stage-counter').textContent = data.counter;
+      document.getElementById('progress-bar-fill').style.width = data.progress;
+
+      // Update Quick Switcher Pills
+      document.querySelectorAll('.stage-nav-pill').forEach(btn => {
+        const s = parseInt(btn.getAttribute('data-stage'));
+        if (s === stageNum) {
+          btn.className = "stage-nav-pill px-2.5 py-1 rounded-full text-xs font-bold bg-primary-container text-surface-container-lowest";
+        } else {
+          btn.className = "stage-nav-pill px-2.5 py-1 rounded-full text-xs font-medium hover:bg-surface-container text-on-surface-variant";
+        }
+      });
+
+      // Special stage 4 timer
+      if (stageNum === 4) {
+        startHeartbeat();
+      } else {
+        clearInterval(heartbeatTimer);
+      }
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Language Toggle logic
+    function setLangMode(lang) {
+      currentLang = lang;
+      const btnEn = document.getElementById('lang-en');
+      const btnHi = document.getElementById('lang-hi');
+
+      if (lang === 'hi') {
+        btnHi.className = "px-2.5 py-1 rounded bg-surface-container-lowest text-secondary shadow-sm font-bold";
+        btnEn.className = "px-2.5 py-1 rounded transition text-on-surface-variant hover:text-on-surface";
+        showToast("हिंदी देवनागरी दृश्य सक्रिय है (Bilingual Hindi Active)");
+      } else {
+        btnEn.className = "px-2.5 py-1 rounded bg-surface-container-lowest text-secondary shadow-sm font-bold";
+        btnHi.className = "px-2.5 py-1 rounded transition text-on-surface-variant hover:text-on-surface";
+        showToast("English focus view enabled");
+      }
+    }
+
+    // Stage 1 Habit calculations
+    function calculateCorpus(weekly) {
+      document.getElementById('slider-val-label').textContent = `₹${weekly} / हफ़्ता`;
+      // Formula: Compound weekly at ~11% over 5 years (260 weeks)
+      const weeklyRate = 0.11 / 52;
+      const weeks = 260;
+      const futureValue = weekly * (((Math.pow(1 + weeklyRate, weeks) - 1) / weeklyRate) * (1 + weeklyRate));
+      const formatted = Math.round(futureValue).toLocaleString('en-IN');
+      document.getElementById('corpus-val').textContent = `~₹${formatted}`;
+    }
+
+    function updateGoalPlan(amount, label) {
+      const slider = document.getElementById('saving-slider');
+      slider.value = amount;
+      calculateCorpus(amount);
+      showToast(`${label} चयनित`);
+    }
+
+    // Stage 3 to 4 Simulation
+    function simulateVerification() {
+      const pan = document.getElementById('pan-input').value;
+      if (!pan || pan.length < 10) {
+        alert("कृपया वैध 10-अंकों का पैन कार्ड दर्ज करें");
+        return;
+      }
+      goToStage(4);
+    }
+
+    // Stage 4 Live Tracker heartbeat simulation
+    function startHeartbeat() {
+      heartbeatCounter = 5;
+      const el = document.getElementById('heartbeat-sec');
+      clearInterval(heartbeatTimer);
+      heartbeatTimer = setInterval(() => {
+        heartbeatCounter++;
+        if (el) el.textContent = `${heartbeatCounter}s`;
+        if (heartbeatCounter >= 10) {
+          clearInterval(heartbeatTimer);
+          showToast("केवाईसी सत्यापन पूर्ण! फोलियो तैयार हो रहा है...");
+          setTimeout(() => {
+            goToStage(5);
+          }, 1000);
+        }
+      }, 1000);
+    }
+
+    // Stage 5 Interactions
+    function triggerPaymentSuccess() {
+      showToast("✓ ₹100 निवेश सफल! आपका कोरू पौधा अंकुरित हो गया है।");
+      setTimeout(() => {
+        alert("बधाई हो! आपकी पहली ₹100 की आपातकालीन कुशन बचत लिक्विड फंड में सफलतापूर्वक जमा हो गई है। फोलियो: #SP-884920");
+      }, 500);
+    }
+
+    function triggerReminderModal() {
+      showToast("लक्ष्य सुरक्षित! आज रात 8:00 बजे व्हाट्सएप रिमाइंडर शेड्यूल किया गया।");
+    }
+
+    function shareLinkAlert() {
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText("https://sprout.invest/r/rajinder100");
+        showToast("रेफरल लिंक कॉपी किया गया: sprout.invest/r/rajinder100");
+      } else {
+        showToast("रेफरल लिंक तैयार है!");
+      }
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      const text = document.getElementById('toast-text');
+      text.textContent = msg;
+      toast.classList.remove('hidden');
+      setTimeout(() => {
+        toast.classList.add('hidden');
+      }, 3500);
+    }
+  </script>
+</body></html>
